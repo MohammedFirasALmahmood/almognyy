@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>تعديل</title>
+</head>
+<body>
+<div style="text-align: center;">
+<center>
+    <div align="center" style="width: 50%; height:50%">
+        <form action="" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+
+            <fieldset dir="rtl">
+
+                <legend>تعديل الاختبار</legend>
+
+                    <label>سعر الاختبار : <input name="price" type="number" value="{{names.lprice}}"></label>
+                </p>
+
+                {% if names.publish%}
+                    <label>نشر<input name="check" type="checkbox" checked></label>
+                    {% else%}
+                    <label>نشر<input name="check" type="checkbox"></label>
+                    {% endif %}
+
+                <input name="add" type="submit" value="تاكيد">
+
+            </fieldset>
+        </form>
+    </div>
+    </center>
+</div>
+</body>
+</html>

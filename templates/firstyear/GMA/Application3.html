@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>المصادر المؤولة</title>
+</head>
+<body>
+
+<div style="text-align: center;">
+    <center>
+    <div align="center" style="width: 50%; height:50%">
+        <form action="" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+
+            <fieldset dir="rtl">
+
+                <legend>إضافة ملف <b style="color: red">(يضاف ملف واحد فقط)</b></legend>
+
+                <!-- Label and input field -->
+                <p>
+                    <label>عنوان الملف : <input name="name" type="text"/></label>
+                </p>
+
+                <p>
+                    {{form.as_p}}
+                </p>
+
+                <p>
+                    <label>سعر الملف : <input name="price" type="number"></label>
+                </p>
+
+
+                <label>نشر<input name="check" type="checkbox" value="checked"></label>
+
+                <input name="add" type="submit" value="تاكيد">
+
+            </fieldset>
+        </form>
+    </div></center>
+</div>
+
+
+
+<div style="text-align: center;">
+<center>
+    <div align="center" style="width: 50%; height:50%">
+        <form method="POST">
+                {% csrf_token %}
+
+                <fieldset dir="rtl">
+
+                    <legend>حذف الملف</legend>
+
+
+                    <pre style="color: red ;font-size: 18px">   <label><input name="delete" type="submit" value="تاكيد">   حذف الملف  </label>   </pre>
+
+
+                </fieldset>
+            </form>
+    </div>
+    </center>
+</div>
+
+<div style="text-align: center;">
+    <center>
+    <div align="center" style="width: 50%; height:50%">
+        <form action="" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+
+            <fieldset dir="rtl">
+
+                <legend>تعديل ملف</legend>
+
+                <!-- Label and input field -->
+                <p>
+                    <label>عنوان الملف : <input name="name" type="text" value="{{names.lname}}"></label>
+                </p>
+                <p>
+                    <label>سعر الملف : <input name="price" type="number" value="{{names.lprice}}"></label>
+                </p>
+
+
+                {% if names.publish%}
+                    <label>نشر<input name="check" type="checkbox" checked></label>
+                    {% else%}
+                    <label>نشر<input name="check" type="checkbox"></label>
+                    {% endif %}
+
+                <input name="edit" type="submit" value="تاكيد">
+
+            </fieldset>
+        </form>
+    </div></center>
+</div>
+
+<a href="{% url 'Application'%}">الرجوع</a>
+
+<hr>
+<p align="right" dir="rtl">
+    {{names.lname}}
+</p>
+
+
+</body>
+</html>

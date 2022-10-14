@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>المحاضرات</title>
+</head>
+<body>
+<div style="text-align: center;" dir="rtl">
+
+    <br><a href="{% url 'WMorphology'%}" style="font-size: 18px;"> إضافة محاضرة </a><br><br>
+    {% for x in name%}
+    <pre style="font-size: 18px">{{x.lname}}    <a href="{% url 'WMorphologyE' number=x.number%}">تعديل\حذف</a>    </pre>
+    {%endfor%}
+
+
+
+</div>
+<a href="{% url 'WGMA'%}">الرجوع</a>
+</body>
+</html>

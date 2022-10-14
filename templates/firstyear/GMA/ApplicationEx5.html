@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>اختبار 5</title>
+</head>
+<body>
+<div style="text-align: center;">
+<center>
+    <div align="center" style="width: 50%; height:50%">
+        <form method="POST">
+            {% csrf_token %}
+
+            <fieldset dir="rtl">
+
+                <legend>اضافة سؤال</legend>
+                <p>
+                    <label>السؤال : <input name="question" type="text"/></label>
+                </p>
+
+                <p>
+                    <label>الجواب 1 : <input name="ans1" type="text"/></label><input name="No" type="radio" value=1>
+
+                </p>
+
+                <p>
+                    <label>جواب 2 : <input name="ans2" type="text"/></label><input name="No" type="radio" value=2>
+                </p>
+
+                <p>
+                    <label>جواب 3 : <input name="ans3" type="text"/></label><input name="No" type="radio" value=3>
+                </p>
+
+                <p>
+                    <label>جواب 4 : <input name="ans4" type="text"/></label><input name="No" type="radio" value=4>
+                </p>
+
+                <p>
+                    <label>التعليل : <input name="why" size="55px;" type="text"/></label>
+                </p>
+                <p>
+                    <label>ترتيب السؤال :<input name="number" type="number"></label>
+                </p>
+
+
+                <input name="add" type="submit" value="تاكيد">
+
+            </fieldset>
+
+        </form>
+    </div></center>
+</div>
+
+
+<div style="text-align: center;">
+<center>
+    <div align="center" style="width: 50%; height:50%">
+        <form method="POST">
+            {% csrf_token %}
+
+            <fieldset dir="rtl">
+
+                <legend>حذف السؤال</legend>
+
+                <!-- Label and input field -->
+                <p>
+                    <label>ترتيب السؤال<input name="number" type="number"/></label>
+                </p>
+
+
+                <input name="delete" type="submit" value="تاكيد">
+
+
+            </fieldset>
+        </form>
+    </div></center>
+</div>
+
+<a href="{% url 'ApplicationEx'%}">الرجوع</a>
+<div align="right" dir="rtl" >
+{%for x in names%}
+
+    <hr>
+    <pre style="font-size: 18px">
+    ترتيب السؤال : {{x.number}}
+    السؤال:   {{x.question}}
+    الجواب 1 :{{x.ans1}}
+    الجواب 2 :{{x.ans2}}
+    الجواب 3 :{{x.ans3}}
+    الجواب 4 :{{x.ans4}}
+    التعليل :{{x.why}}
+    رقم الجواب الصحيح :{{x.No_true}}
+</pre>
+{% endfor %}
+    </div>
+
+<a href="{% url 'ApplicationEx'%}">الرجوع</a>
+</body>
+</html>

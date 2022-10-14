@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>محاضرات</title>
+</head>
+<body>
+{%load static%}
+{% block containt %}
+
+<div style="text-align: center;">
+
+    <div align="center" style="width: 50%; height:50%">
+        <form action="" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+
+            <fieldset dir="rtl">
+
+                <legend>إضافة ملف</legend>
+
+                <!-- Label and input field -->
+                <p>
+                    <label>عنوان المحاضرة : <input name="name"/></label>
+                </p>
+
+                <p>
+                    {{form.as_p}}
+                </p>
+
+                <p>
+                    <label>سعر المحاضرة : <input name="price" type="number"></label>
+                </p>
+
+                <p>
+                    <label>ترتيب المحاضرة : <input name="number" type="number"></label>
+                </p>
+
+                <label>نشر<input name="check" type="checkbox" value="checked"></label>
+
+                <input name="add" type="submit" value="تاكيد">
+
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+
+
+<div style="text-align: center;">
+
+    <div align="center" style="width: 50%; height:50%">
+        <form method="POST">
+            {% csrf_token %}
+
+            <fieldset dir="rtl">
+
+                <legend>حذف الملف</legend>
+
+                <!-- Label and input field -->
+                <p>
+                    <label>رقم المحاضرة <input name="id" type="number"/></label>
+                </p>
+
+
+                <input name="delete" type="submit" value="تاكيد">
+
+
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+{%endblock containt%}
+<a href="{% url 'WResearchSeeds'%}">الرجوع</a>
+{%for x in names%}
+<p align="right" dir="rtl">
+    {{x.lname}} ترتيب {{x.number}} <b>الرقم </b> ({{x.id}})
+</p>
+
+{% endfor %}
+<a href="{% url 'WResearchSeeds'%}">الرجوع</a>
+
+</body>
+</html>

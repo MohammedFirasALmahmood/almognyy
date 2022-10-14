@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>سؤال و أربع اجوبة</title>
+</head>
+<body>
+<div style="text-align: center;">
+
+    <div align="center" style="width: 50%; height:50%">
+        <form method="POST">
+            {% csrf_token %}
+
+            <fieldset dir="rtl">
+
+                <legend>سؤال و اربع خيارات</legend>                <p>
+                    <label>رقم الاختبار: <input type="number" name="ExNo" value="1"></label>
+                </p>
+                <p>
+                    <label>السؤال : <input name="question" type="text"/></label>
+                </p>
+
+                <p>
+                    <label>الجواب 1 : <input name="ans1" type="text"/></label><input name="No" type="radio" value=1>
+
+                </p>
+
+                <p>
+                    <label>جواب 2 : <input name="ans2" type="text"/></label><input name="No" type="radio" value=2>
+                </p>
+
+                <p>
+                    <label>جواب 3 : <input name="ans3" type="text"/></label><input name="No" type="radio" value=3>
+                </p>
+
+                <p>
+                    <label>جواب 4 : <input name="ans4" type="text"/></label><input name="No" type="radio" value=4>
+                </p>
+
+                <p>
+                    <label>التعليل : <input name="why" size="55px;" type="text"/></label>
+                </p>
+                <p>
+                    <label>ترتيب السؤال :<input name="number" type="number"></label>
+                </p>
+
+
+                <p>
+                    <label>السعر(لاول سؤال فقط وهو سعر الامتحان ) : <input name="price" type="number" value="0"/></label>
+                </p>
+
+                <label>نشر<input name="check" type="checkbox" value="checked"></label>
+
+                <input name="add" type="submit" value="تاكيد">
+
+            </fieldset>
+
+        </form>
+    </div>
+</div>
+
+
+<div style="text-align: center;">
+
+    <div align="center" style="width: 50%; height:50%">
+        <form method="POST">
+            {% csrf_token %}
+
+            <fieldset dir="rtl">
+
+                <legend>حذف السؤال</legend>
+
+                <!-- Label and input field -->
+                <p>
+                    <label>رقم الملف <input name="id" type="number"/></label>
+                </p>
+
+
+                <input name="delete" type="submit" value="تاكيد">
+
+
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<a href="{% url 'AResearchSeeds'%}">الرجوع</a>
+
+{%for x in names%}
+<p align="right" dir="rtl">
+    {{x.lname}} ترتيب {{x.number}} <b>الرقم </b> ({{x.id}})
+</p>
+
+{% endfor %}
+<a href="{% url 'AResearchSeeds'%}">الرجوع</a>
+</body>
+</html>

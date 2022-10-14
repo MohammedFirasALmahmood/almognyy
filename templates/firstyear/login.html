@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="{{ csrf_token }}" name="csrf_token">
+
+    <title>login</title>
+</head>
+<body>
+{% csrf_token %}
+
+{% block lform%}
+<form method="POST">
+    {% csrf_token %}
+    <fieldset dir="rtl">
+
+        <legend align=" right">تسجيل الدخول</legend>
+
+        <!-- Label and input field -->
+        <p align="right" dir="rtl">
+            <label>الاسم : <input name="username"/></label>
+        </p>
+        <p align="right" dir="rtl">
+            <label>كلمة السر : <input name="password"
+                                      type="password"/></label>
+        </p>
+        <p align="right">
+            <button type="submit">Submit</button>
+        </p>
+    </fieldset>
+</form>
+{% endblock lform%}
+
+</body>
+</html>
