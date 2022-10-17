@@ -5,10 +5,37 @@
     <title>اضافة طالب</title>
 </head>
 <body>
-<form method="POST">
-  <fieldset>
-      <legend>اضافة طالب</legend>
-  </fieldset>
-</form>
+<div style="text-align: center; align-content: center">
+    <center>
+
+        <div align="center" style="width: 50%; height:50%">
+            <form method="POST">
+                {% csrf_token %}
+
+                <fieldset dir="rtl">
+
+                    <legend>إضاف طالب</legend>
+                    <p>
+                        <label>الاسم و الكنية :<input type="text" name="name" ></label>
+                    </p>
+                    <p>
+                        <label>الرقم : <input name="number" type="text"/></label>
+                    </p>
+
+
+                    <p>
+                        <label>الرصيد : <input name="balance" type="number" value="0"/></label>
+                    </p>
+
+
+                    <input name="add" type="submit" value="اضافة">
+
+                </fieldset>
+
+            </form>
+        </div>
+    </center>
+</div>
+
 </body>
 </html>
