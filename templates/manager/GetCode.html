@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>اضافة طالب</title>
+    <title>الحصول على كود التفعيل</title>
 </head>
 <body>
 <div style="text-align: center; align-content: center">
@@ -16,13 +16,13 @@
 
                     <legend>إضاف طالب</legend>
                     <p>
-                        <label>الاسم و الكنية :<input type="text" name="name" ></label>
+                        <label>الرقم : <input name="number" type="text" value="{{list.student_phone}}"/></label>
                     </p>
                     <p>
-                        <label>الرقم : <input name="number" type="text"/></label>
+                        <label>الاسم و الكنية :<input type="text" name="name" value="{{list.student_name}}" ></label>
                     </p>
                     <p>
-                        <label>الرصيد : <input name="balance" type="number" value="0"/></label>
+                        <label>الكود : <input name="activation" type="number" value="{{list.activation_code}}"/></label>
                     </p>
                     <input name="add" type="submit" value="اضافة">
 
