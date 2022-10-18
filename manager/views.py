@@ -38,5 +38,5 @@ def Charge(request):
         if student_balance !='':
             list.student_balance=student_balance
             list.save()
-        return render(request, 'manager/charge.html', {'list': list,})
+        return render(request, 'manager/charge.html', {'list': list})
     return render(request,'manager/charge.html')
