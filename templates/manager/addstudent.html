@@ -16,15 +16,19 @@
 
                     <legend>إضاف طالب</legend>
                     <p>
-                        <label>الاسم و الكنية :<input type="text" name="name" ></label>
+                        <label>الاسم و الكنية :<input type="text" name="name" value="{{name}}"></label>
                     </p>
                     <p>
-                        <label>الرقم : <input name="number" type="text"/></label>
+                        <label>الرقم : <input name="number" type="text" value="{{phone}}"></label>
                     </p>
                     <p>
-                        <label>الرصيد : <input name="balance" type="number" value="0"/></label>
+                        <label>الرصيد : <input name="balance" type="number" value={{balance}}></label>
+                    </p>
+                    <p>
+                        <label>كود التفعيل : <input name="activation" type="number" value={{act}}></label>
                     </p>
                     <input name="add" type="submit" value="اضافة">
+                     <button><a href="{% url 'addstudent'%}">تنظيف</a></button>
 
                 </fieldset>
 

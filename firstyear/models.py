@@ -391,3 +391,34 @@ class AResearchSeedsP(models.Model):
 
     class Meta:
         ordering = ['number']
+
+
+class APre_IslamicLiterature(models.Model):
+    lname = models.CharField(max_length=55, null=False)
+    lfile = models.FileField(upload_to='Pre_IslamicLiterature/A')
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    number = models.IntegerField(null=False, default='1')
+    publish = models.BooleanField(null=True, default=True)
+
+
+class HPre_IslamicLiterature(models.Model):
+    lname = models.CharField(max_length=55, null=False)
+    lfile = models.FileField(upload_to='Pre_IslamicLiterature/A')
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    number = models.IntegerField(null=False, default='1')
+    publish = models.BooleanField(null=True, default=True)
+
+
+class GPre_IslamicLiterature(models.Model):
+    lname = models.CharField(max_length=55, null=False)
+    lfile = models.FileField(upload_to='Pre_IslamicLiterature/G')
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    publish = models.BooleanField(null=True, default=True)
+
+
+class PPre_IslamicLiterature(models.Model):
+    lname = models.CharField(max_length=55, null=False)
+    lfile = models.FileField(upload_to='Pre_IslamicLiterature/P')
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    number = models.IntegerField(null=False, default='1')
+    publish = models.BooleanField(null=True, default=True)

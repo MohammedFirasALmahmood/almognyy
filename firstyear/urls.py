@@ -71,4 +71,17 @@ urlpatterns = [
     path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeeds4', views.AResearchSeeds4, name='AResearchSeeds4'),
     path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeedsG', views.AResearchSeedsG, name='AResearchSeedsG'),
     path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeedsP', views.AResearchSeedsP, name='AResearchSeedsP'),
+
+
+
+
+
+    path('main/firstsemester/Pre_IslamicLiterature', views.Pre_IslamicLiterature, name='Pre_IslamicLiterature'),
+    path('main/firstsemester/HPre_IslamicLiteratureM', views.HPre_IslamicLiteratureM, name='HPre_IslamicLiteratureM'),
+    path('main/firstsemester/HPre_IslamicLiterature', views.HPre_IslamicLiterature, name='HPre_IslamicLiterature'),
+    path('main/firstsemester/HPre_IslamicLiteratureE/<int:number>', views.HPre_IslamicLiteratureE, name="HPre_IslamicLiteratureE"),
+    path('main/firstsemester/APre_IslamicLiteratureM', views.APre_IslamicLiteratureM, name='APre_IslamicLiteratureM'),
+    path('main/firstsemester/APre_IslamicLiterature', views.APre_IslamicLiterature, name='APre_IslamicLiterature'),
+    path('main/firstsemester/APre_IslamicLiteratureE/<int:number>', views.APre_IslamicLiteratureE, name="APre_IslamicLiteratureE"),
+
 ]

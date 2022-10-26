@@ -36,6 +36,10 @@ from .models import WMorphology as WM
 from .models import WResearchSeedsG as WRSG
 from .models import WResearchSeedsL as WRSL
 from .models import WResearchSeedsP as WRSP
+from .models import APre_IslamicLiterature as APre
+from .models import PPre_IslamicLiterature as PPre
+from .models import GPre_IslamicLiterature as GPre
+from .models import HPre_IslamicLiterature as HPre
 
 
 # Create your views here.
@@ -1170,3 +1174,80 @@ def AResearchSeedsP(request):
             instance.delete()
             member.delete()
     return render(request, 'firstyear/ResearchSeeds/AResearchSeedsP.html', {'names': list})
+
+def Pre_IslamicLiterature(request):
+    return render(request,'firstyear/Pre_IslamicLiterature/Pre_IslamicLiterature.html',)
+def HPre_IslamicLiteratureM(request):
+    list=HPre.objects.all()
+    return render(request,'firstyear/Pre_IslamicLiterature/HPre_IslamicLiteratureM.html', {'name': list})
+def HPre_IslamicLiteratureE(request, number):
+    list = HPre.objects.get(number=number)
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        number = request.POST.get('number')
+        publish = bool(request.POST.get('check'))
+        list.name = name
+        list.publish = publish
+        list.lprice = price
+        list.namber = number
+        list.save()
+        return redirect('HPre_IslamicLiteratureM')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('WGrammarM')
+    return render(request, 'firstyear/Pre_IslamicLiterature/HPre_IslamicLiteratureE.html', {'name': list})
+
+def HPre_IslamicLiterature(request):
+    list = HPre.objects.all()
+    file = Form1(request.POST, request.FILES)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            if file.is_valid():
+                name = request.POST.get('name')
+                price = request.POST.get('price')
+                number = request.POST.get('number')
+                publish = bool(request.POST.get('check'))
+                Cdate = HPre.objects.create(lname=name, lfile=request.FILES['file'], lprice=price, number=number,publish=publish)
+                Cdate.save()
+                return redirect(WGrammarM)
+
+    return render(request, 'firstyear/Pre_IslamicLiterature/HPre_IslamicLiterature.html', {'names': list, 'form': file})
+def APre_IslamicLiteratureM(request):
+    list=APre.objects.all()
+    return render(request,'firstyear/Pre_IslamicLiterature/APre_IslamicLiteratureM.html', {'name': list})
+def APre_IslamicLiteratureE(request, number):
+    list = AHPre.objects.get(number=number)
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        number = request.POST.get('number')
+        publish = bool(request.POST.get('check'))
+        list.name = name
+        list.publish = publish
+        list.lprice = price
+        list.namber = number
+        list.save()
+        return redirect('APre_IslamicLiteratureM')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('APre_IslamicLiteratureM')
+    return render(request, 'firstyear/Pre_IslamicLiterature/APre_IslamicLiteratureE.html', {'name': list})
+
+def APre_IslamicLiterature(request):
+    list = APre.objects.all()
+    file = Form1(request.POST, request.FILES)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            if file.is_valid():
+                name = request.POST.get('name')
+                price = request.POST.get('price')
+                number = request.POST.get('number')
+                publish = bool(request.POST.get('check'))
+                Cdate = APre.objects.create(lname=name, lfile=request.FILES['file'], lprice=price, number=number,publish=publish)
+                Cdate.save()
+                return redirect('APre_IslamicLiteratureM')
+
+    return render(request, 'firstyear/Pre_IslamicLiterature/APre_IslamicLiterature.html', {'names': list, 'form': file})
