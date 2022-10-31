@@ -119,10 +119,9 @@ class AMorphology4(models.Model):
 
 
 class AGMAGoldenM(models.Model):
-    name = models.TextField(max_length=100,null=False,default="0")
+    name = models.TextField(max_length=100, null=False, default="0")
     publish = models.BooleanField()
     lprice = models.IntegerField(default=1)
-
 
 
 class AGMAGolden(models.Model):
@@ -206,7 +205,7 @@ class ApplicationExM(models.Model):
 
 
 class ApplicationEx1(models.Model):
-    ExNo=models.ForeignKey(ApplicationExM, on_delete=models.CASCADE, default=0)
+    ExNo = models.ForeignKey(ApplicationExM, on_delete=models.CASCADE, default=0)
     question = models.TextField(null=False)
     ans1 = models.TextField(null=False)
     ans2 = models.TextField(null=False)
@@ -214,15 +213,14 @@ class ApplicationEx1(models.Model):
     ans4 = models.TextField(null=False)
     why = models.TextField(default='')
     No_true = models.IntegerField(default=1, null=False)
-    number = models.IntegerField(default=1, null=False,unique=True)
-
+    number = models.IntegerField(default=1, null=False, unique=True)
 
     class Meta:
         ordering = ['number']
 
 
 class ApplicationEx2(models.Model):
-    ExNo=models.ForeignKey(ApplicationExM, on_delete=models.CASCADE, default=0)
+    ExNo = models.ForeignKey(ApplicationExM, on_delete=models.CASCADE, default=0)
     question = models.TextField(null=False)
     ans1 = models.TextField(null=False)
     ans2 = models.TextField(null=False)
@@ -230,15 +228,14 @@ class ApplicationEx2(models.Model):
     ans4 = models.TextField(null=False)
     why = models.TextField(default='')
     No_true = models.IntegerField(default=1, null=False)
-    number = models.IntegerField(default=1, null=False,unique=True)
-
+    number = models.IntegerField(default=1, null=False, unique=True)
 
     class Meta:
         ordering = ['number']
 
 
 class ApplicationEx3(models.Model):
-    ExNo=models.ForeignKey(ApplicationExM, on_delete=models.CASCADE, default=0)
+    ExNo = models.ForeignKey(ApplicationExM, on_delete=models.CASCADE, default=0)
     question = models.TextField(null=False)
     ans1 = models.TextField(null=False)
     ans2 = models.TextField(null=False)
@@ -246,15 +243,14 @@ class ApplicationEx3(models.Model):
     ans4 = models.TextField(null=False)
     why = models.TextField(default='')
     No_true = models.IntegerField(default=1, null=False)
-    number = models.IntegerField(default=1, null=False,unique=True)
-
+    number = models.IntegerField(default=1, null=False, unique=True)
 
     class Meta:
         ordering = ['number']
 
 
 class ApplicationEx4(models.Model):
-    ExNo=models.ForeignKey(ApplicationExM, on_delete=models.CASCADE, default=0)
+    ExNo = models.ForeignKey(ApplicationExM, on_delete=models.CASCADE, default=0)
     question = models.TextField(null=False)
     ans1 = models.TextField(null=False)
     ans2 = models.TextField(null=False)
@@ -262,15 +258,14 @@ class ApplicationEx4(models.Model):
     ans4 = models.TextField(null=False)
     why = models.TextField(default='')
     No_true = models.IntegerField(default=1, null=False)
-    number = models.IntegerField(default=1, null=False,unique=True)
-
+    number = models.IntegerField(default=1, null=False, unique=True)
 
     class Meta:
         ordering = ['number']
 
 
 class ApplicationEx5(models.Model):
-    ExNo=models.ForeignKey(ApplicationExM, on_delete=models.CASCADE, default=0)
+    ExNo = models.ForeignKey(ApplicationExM, on_delete=models.CASCADE, default=0)
     question = models.TextField(null=False)
     ans1 = models.TextField(null=False)
     ans2 = models.TextField(null=False)
@@ -278,15 +273,14 @@ class ApplicationEx5(models.Model):
     ans4 = models.TextField(null=False)
     why = models.TextField(default='')
     No_true = models.IntegerField(default=1, null=False)
-    number = models.IntegerField(default=1, null=False,unique=True)
-
+    number = models.IntegerField(default=1, null=False, unique=True)
 
     class Meta:
         ordering = ['number']
 
 
 class ApplicationEx6(models.Model):
-    ExNo=models.ForeignKey(ApplicationExM, on_delete=models.CASCADE, default=0)
+    ExNo = models.ForeignKey(ApplicationExM, on_delete=models.CASCADE, default=0)
     question = models.TextField(null=False)
     ans1 = models.TextField(null=False)
     ans2 = models.TextField(null=False)
@@ -294,8 +288,7 @@ class ApplicationEx6(models.Model):
     ans4 = models.TextField(null=False)
     why = models.TextField(default='')
     No_true = models.IntegerField(default=1, null=False)
-    number = models.IntegerField(default=1, null=False,unique=True)
-
+    number = models.IntegerField(default=1, null=False, unique=True)
 
     class Meta:
         ordering = ['number']
@@ -341,9 +334,18 @@ class AResearchSeeds1(models.Model):
     publish = models.BooleanField(null=True, default=True)
     number = models.IntegerField(null=False, default='1')
 
+class AResearchSeeds4M(models.Model):
+    name = models.CharField(max_length=55, null=False)
+    number = models.IntegerField(default=1, null=False, blank=False)
+    publish = models.BooleanField(null=True, default=True)
+    lprice = models.IntegerField(default=1, null=True, blank=True)
+
+    class Meta:
+        ordering = ['number']
+
 
 class AResearchSeeds4(models.Model):
-    ExNo = models.IntegerField(default=1, null=False, blank=False)
+    ExNo = models.ForeignKey(AResearchSeeds4M, on_delete=models.CASCADE, default=1)
     question = models.TextField(null=False)
     ans1 = models.TextField(null=False)
     ans2 = models.TextField(null=False)
@@ -352,15 +354,17 @@ class AResearchSeeds4(models.Model):
     why = models.TextField(default='')
     No_true = models.IntegerField(default=1, null=False)
     number = models.IntegerField(default=1, null=False)
-    lprice = models.IntegerField(default=0, null=True, blank=True)
-    publish = models.BooleanField(null=True, default=True)
 
     class Meta:
         ordering = ['number']
 
+class AResearchSeedsGM(models.Model):
+    name = models.TextField(max_length=100, null=False, default="0")
+    publish = models.BooleanField()
+    lprice = models.IntegerField(default=1)
 
 class AResearchSeedsG(models.Model):
-    ExNo = models.IntegerField(default=1, null=False, blank=False)
+    ExNo = models.ForeignKey(AResearchSeedsGM, on_delete=models.CASCADE, default=1)
     question = models.TextField(null=False)
     ans1 = models.TextField(null=False)
     ans2 = models.TextField(null=False)
@@ -369,15 +373,21 @@ class AResearchSeedsG(models.Model):
     why = models.TextField(default='')
     No_true = models.IntegerField(default=1, null=False)
     number = models.IntegerField(default=1, null=False)
-    lprice = models.IntegerField(default=0, null=True, blank=True)
-    publish = models.BooleanField(null=True, default=True)
 
     class Meta:
         ordering = ['number']
 
+class AResearchSeedsPS(models.Model):
+    ExNo = models.IntegerField(default=1, null=False, blank=False)
+    semestery = models.IntegerField(default=1, null=False, blank=False)
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    publish = models.BooleanField(null=True, default=True)
+
+    class Meta:
+        ordering = ['ExNo', 'semestery']
 
 class AResearchSeedsP(models.Model):
-    ExNo = models.IntegerField(default=1, null=False, blank=False)
+    PreviosS = models.ForeignKey(AResearchSeedsPS, on_delete=models.CASCADE, default=1)
     question = models.TextField(null=False)
     ans1 = models.TextField(null=False)
     ans2 = models.TextField(null=False)
@@ -386,8 +396,6 @@ class AResearchSeedsP(models.Model):
     why = models.TextField(default='')
     No_true = models.IntegerField(default=1, null=False)
     number = models.IntegerField(default=1, null=False)
-    lprice = models.IntegerField(default=0, null=True, blank=True)
-    publish = models.BooleanField(null=True, default=True)
 
     class Meta:
         ordering = ['number']
