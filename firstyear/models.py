@@ -62,13 +62,13 @@ class AGrammer1(models.Model):
     number = models.IntegerField(default=1, null=False)
     publish = models.BooleanField(null=True, default=True)
 
-
 class AGrammar4M(models.Model):
     name = models.CharField(max_length=55, null=False)
     number = models.IntegerField(default=1, null=False, blank=False)
     publish = models.BooleanField(null=True, default=True)
     lprice = models.IntegerField(default=1, null=True, blank=True)
-
+    class Meta:
+        ordering = ['number']
 
 class AGrammer4(models.Model):
     ExNo = models.ForeignKey(AGrammar4M, on_delete=models.CASCADE, default=1)
@@ -117,12 +117,10 @@ class AMorphology4(models.Model):
     class Meta:
         ordering = ['number']
 
-
 class AGMAGoldenM(models.Model):
     name = models.TextField(max_length=100, null=False, default="0")
     publish = models.BooleanField()
     lprice = models.IntegerField(default=1)
-
 
 class AGMAGolden(models.Model):
     ExNo = models.ForeignKey(AGMAGoldenM, on_delete=models.CASCADE, default=1)
@@ -411,22 +409,311 @@ class APre_IslamicLiterature(models.Model):
 
 class HPre_IslamicLiterature(models.Model):
     lname = models.CharField(max_length=55, null=False)
-    lfile = models.FileField(upload_to='Pre_IslamicLiterature/A')
+    lfile = models.FileField(upload_to='Pre_IslamicLiterature/A',default="",null=True)
     lprice = models.IntegerField(default=0, null=True, blank=True)
     number = models.IntegerField(null=False, default='1')
-    publish = models.BooleanField(null=True, default=True)
-
-
-class GPre_IslamicLiterature(models.Model):
-    lname = models.CharField(max_length=55, null=False)
-    lfile = models.FileField(upload_to='Pre_IslamicLiterature/G')
-    lprice = models.IntegerField(default=0, null=True, blank=True)
     publish = models.BooleanField(null=True, default=True)
 
 
 class PPre_IslamicLiterature(models.Model):
     lname = models.CharField(max_length=55, null=False)
-    lfile = models.FileField(upload_to='Pre_IslamicLiterature/P')
+    lfile = models.FileField(upload_to='Pre_IslamicLiterature/P',null=True)
     lprice = models.IntegerField(default=0, null=True, blank=True)
     number = models.IntegerField(null=False, default='1')
     publish = models.BooleanField(null=True, default=True)
+
+
+
+
+class AE1(models.Model):
+    lname = models.CharField(max_length=55, null=False)
+    lfile = models.FileField(upload_to='ResearchSeeds/A1')
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    publish = models.BooleanField(null=True, default=True)
+    number = models.IntegerField(null=False, default='1')
+
+class AE4M(models.Model):
+    name = models.CharField(max_length=55, null=False)
+    number = models.IntegerField(default=1, null=False, blank=False)
+    publish = models.BooleanField(null=True, default=True)
+    lprice = models.IntegerField(default=1, null=True, blank=True)
+
+    class Meta:
+        ordering = ['number']
+
+
+class AE4(models.Model):
+    ExNo = models.ForeignKey(AE4M, on_delete=models.CASCADE, default=1)
+    question = models.TextField(null=False)
+    ans1 = models.TextField(null=False)
+    ans2 = models.TextField(null=False)
+    ans3 = models.TextField(null=False)
+    ans4 = models.TextField(null=False)
+    why = models.TextField(default='')
+    No_true = models.IntegerField(default=1, null=False)
+    number = models.IntegerField(default=1, null=False)
+
+    class Meta:
+        ordering = ['number']
+
+class AEGM(models.Model):
+    name = models.TextField(max_length=100, null=False, default="0")
+    publish = models.BooleanField()
+    lprice = models.IntegerField(default=1)
+
+class AEG(models.Model):
+    ExNo = models.ForeignKey(AEGM, on_delete=models.CASCADE, default=1)
+    question = models.TextField(null=False)
+    ans1 = models.TextField(null=False)
+    ans2 = models.TextField(null=False)
+    ans3 = models.TextField(null=False)
+    ans4 = models.TextField(null=False)
+    why = models.TextField(default='')
+    No_true = models.IntegerField(default=1, null=False)
+    number = models.IntegerField(default=1, null=False)
+
+    class Meta:
+        ordering = ['number']
+
+class AEPS(models.Model):
+    ExNo = models.IntegerField(default=1, null=False, blank=False)
+    semestery = models.IntegerField(default=1, null=False, blank=False)
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    publish = models.BooleanField(null=True, default=True)
+
+    class Meta:
+        ordering = ['ExNo', 'semestery']
+
+class AEP(models.Model):
+    PreviosS = models.ForeignKey(AEPS, on_delete=models.CASCADE, default=1)
+    question = models.TextField(null=False)
+    ans1 = models.TextField(null=False)
+    ans2 = models.TextField(null=False)
+    ans3 = models.TextField(null=False)
+    ans4 = models.TextField(null=False)
+    why = models.TextField(default='')
+    No_true = models.IntegerField(default=1, null=False)
+    number = models.IntegerField(default=1, null=False)
+
+    class Meta:
+        ordering = ['number']
+
+
+
+
+class ATH1(models.Model):
+    lname = models.CharField(max_length=55, null=False)
+    lfile = models.FileField(upload_to='ResearchSeeds/A1')
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    publish = models.BooleanField(null=True, default=True)
+    number = models.IntegerField(null=False, default='1')
+
+class ATH4M(models.Model):
+    name = models.CharField(max_length=55, null=False)
+    number = models.IntegerField(default=1, null=False, blank=False)
+    publish = models.BooleanField(null=True, default=True)
+    lprice = models.IntegerField(default=1, null=True, blank=True)
+
+    class Meta:
+        ordering = ['number']
+
+
+class ATH4(models.Model):
+    ExNo = models.ForeignKey(ATH4M, on_delete=models.CASCADE, default=1)
+    question = models.TextField(null=False)
+    ans1 = models.TextField(null=False)
+    ans2 = models.TextField(null=False)
+    ans3 = models.TextField(null=False)
+    ans4 = models.TextField(null=False)
+    why = models.TextField(default='')
+    No_true = models.IntegerField(default=1, null=False)
+    number = models.IntegerField(default=1, null=False)
+
+    class Meta:
+        ordering = ['number']
+
+class ATHGM(models.Model):
+    name = models.TextField(max_length=100, null=False, default="0")
+    publish = models.BooleanField()
+    lprice = models.IntegerField(default=1)
+
+class ATHG(models.Model):
+    ExNo = models.ForeignKey(ATHGM, on_delete=models.CASCADE, default=1)
+    question = models.TextField(null=False)
+    ans1 = models.TextField(null=False)
+    ans2 = models.TextField(null=False)
+    ans3 = models.TextField(null=False)
+    ans4 = models.TextField(null=False)
+    why = models.TextField(default='')
+    No_true = models.IntegerField(default=1, null=False)
+    number = models.IntegerField(default=1, null=False)
+
+    class Meta:
+        ordering = ['number']
+
+class ATHPS(models.Model):
+    ExNo = models.IntegerField(default=1, null=False, blank=False)
+    semestery = models.IntegerField(default=1, null=False, blank=False)
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    publish = models.BooleanField(null=True, default=True)
+
+    class Meta:
+        ordering = ['ExNo', 'semestery']
+
+class ATHP(models.Model):
+    PreviosS = models.ForeignKey(ATHPS, on_delete=models.CASCADE, default=1)
+    question = models.TextField(null=False)
+    ans1 = models.TextField(null=False)
+    ans2 = models.TextField(null=False)
+    ans3 = models.TextField(null=False)
+    ans4 = models.TextField(null=False)
+    why = models.TextField(default='')
+    No_true = models.IntegerField(default=1, null=False)
+    number = models.IntegerField(default=1, null=False)
+
+    class Meta:
+        ordering = ['number']
+
+
+
+class  WTStatement(models.Model):
+    lname = models.CharField(max_length=55, null=False)
+    lfile = models.FileField(upload_to='GMA/WGrammar')
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    number = models.IntegerField(null=False, default='1')
+    publish = models.BooleanField(null=True, default=True)
+
+class WPStatement(models.Model):
+    lname = models.CharField(max_length=55, null=False)
+    lfile = models.FileField(upload_to='GMA/WGrammar')
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    number = models.IntegerField(null=False, default='1')
+    publish = models.BooleanField(null=True, default=True)
+
+class WGStatement(models.Model):
+    lname = models.CharField(max_length=55, null=False)
+    lfile = models.FileField(upload_to='GMA/WGMAGlden')
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    publish = models.BooleanField(null=True, default=True)
+
+
+class WPPStatement(models.Model):
+    pyear = models.IntegerField(default=0, null=False)
+    lfile = models.FileField(upload_to='GMA/WGMAPriveos')
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    number = models.IntegerField(null=False, default='1')
+    publish = models.BooleanField(null=True, default=True)
+
+    class Meta:
+        ordering = ['pyear', 'number']
+
+class ATStatement1(models.Model):
+    lname = models.CharField(max_length=55, null=False)
+    lfile = models.FileField(upload_to='GMA/AMorphology1')
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    publish = models.BooleanField(null=True, default=True)
+    number = models.IntegerField(null=False, default='1')
+
+
+class ATStatement4M(models.Model):
+    name = models.CharField(max_length=55, null=False)
+    number = models.IntegerField(default=1, null=False, blank=False)
+    publish = models.BooleanField(null=True, default=True)
+    lprice = models.IntegerField(default=1, null=True, blank=True)
+
+    class Meta:
+        ordering = ['number']
+
+
+class ATStatement4(models.Model):
+    ExNo = models.ForeignKey(ATStatement4M, on_delete=models.CASCADE, default=1)
+    question = models.TextField(null=False)
+    ans1 = models.TextField(null=False)
+    ans2 = models.TextField(null=False)
+    ans3 = models.TextField(null=False)
+    ans4 = models.TextField(null=False)
+    why = models.TextField(default='')
+    No_true = models.IntegerField(default=1, null=False)
+    number = models.IntegerField(default=1, null=False)
+
+    class Meta:
+        ordering = ['number']
+
+class APStatement1(models.Model):
+    lname = models.CharField(max_length=55, null=False)
+    lfile = models.FileField(upload_to='GMA/AMorphology1')
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    publish = models.BooleanField(null=True, default=True)
+    number = models.IntegerField(null=False, default='1')
+
+
+class APStatement4M(models.Model):
+    name = models.CharField(max_length=55, null=False)
+    number = models.IntegerField(default=1, null=False, blank=False)
+    publish = models.BooleanField(null=True, default=True)
+    lprice = models.IntegerField(default=1, null=True, blank=True)
+
+    class Meta:
+        ordering = ['number']
+
+
+class APStatement4(models.Model):
+    ExNo = models.ForeignKey(APStatement4M, on_delete=models.CASCADE, default=1)
+    question = models.TextField(null=False)
+    ans1 = models.TextField(null=False)
+    ans2 = models.TextField(null=False)
+    ans3 = models.TextField(null=False)
+    ans4 = models.TextField(null=False)
+    why = models.TextField(default='')
+    No_true = models.IntegerField(default=1, null=False)
+    number = models.IntegerField(default=1, null=False)
+
+    class Meta:
+        ordering = ['number']
+
+class AGStatementM(models.Model):
+    name = models.TextField(max_length=100, null=False, default="0")
+    publish = models.BooleanField()
+    lprice = models.IntegerField(default=1)
+
+class AGStatement(models.Model):
+    ExNo = models.ForeignKey(AGMAGoldenM, on_delete=models.CASCADE, default=1)
+    question = models.TextField(null=False)
+    ans1 = models.TextField(null=False)
+    ans2 = models.TextField(null=False)
+    ans3 = models.TextField(null=False)
+    ans4 = models.TextField(null=False)
+    why = models.TextField(default='')
+    No_true = models.IntegerField(default=1, null=False)
+    number = models.IntegerField(default=1, null=False)
+
+    class Meta:
+        ordering = ['number']
+
+
+class APPStatementS(models.Model):
+    ExNo = models.IntegerField(default=1, null=False, blank=False)
+    semestery = models.IntegerField(default=1, null=False, blank=False)
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    publish = models.BooleanField(null=True, default=True)
+
+    class Meta:
+        ordering = ['ExNo', 'semestery']
+
+
+class APPStatement(models.Model):
+    PreviosS = models.ForeignKey(APPStatementS, on_delete=models.CASCADE, default=1)
+    question = models.TextField(null=False)
+    ans1 = models.TextField(null=False)
+    ans2 = models.TextField(null=False)
+    ans3 = models.TextField(null=False)
+    ans4 = models.TextField(null=False)
+    why = models.TextField(default='')
+    No_true = models.IntegerField(default=1, null=False)
+    number = models.IntegerField(default=1, null=False)
+
+    class Meta:
+        ordering = ['number']
+
+
+

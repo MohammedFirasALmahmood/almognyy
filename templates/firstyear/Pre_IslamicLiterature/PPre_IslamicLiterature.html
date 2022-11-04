@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> اسئلة دورات</title>
+</head>
+<body>
+
+<div style="text-align: center;">
+    <center>
+        <div align="center" style="width: 50%; height:50%">
+            <form action="" enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
+
+                <fieldset dir="rtl">
+
+                    <legend>إضافة دورة</legend>
+
+                    <!-- Label and input field -->
+                    <p>
+                        <label>السنة : <input name="pyear" type="number" /></label>
+                    </p>
+
+                    <p>
+                        <label>الفصل : <input name="number" type="number"></label>
+                    </p>
+
+                    <p>
+                        {{form.as_p}}
+                    </p>
+
+                    <p>
+                        <label>سعر الدورة : <input name="price" type="number"></label>
+                    </p>
+
+
+                    <label>نشر<input name="check" type="checkbox" ></label>
+
+                    <input name="add" type="submit" value="تاكيد">
+
+                </fieldset>
+            </form>
+        </div>
+    </center>
+</div>
+
+<a href="{% url 'PPre_IslamicLiteratureM'%}">الرجوع</a>
+
+</body>
+</html>

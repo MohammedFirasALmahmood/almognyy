@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>اسئلة ذهبية</title>
+</head>
+<body>
+<div style="text-align: center;" dir="rtl">
+
+    {% if names.name %}
+    <pre style="font-size: 18px">{{names.name}}  <a href="{% url 'AEnGE' %}">تعديل\حذف</a>      <a            href="{% url 'AEnG' %}"> اضافة\حذف اسئلة</a></pre>
+    {%else%}
+
+    <br><a href="{% url 'AEnGAdd'%}" style="font-size: 18px;"> إضافة مجموعة اسئلة </a><br><br>
+
+    {%endif%}
+
+
+
+
+
+</div>
+<a href="{% url 'AEn'%}">الرجوع</a>
+</body>
+
+</html>

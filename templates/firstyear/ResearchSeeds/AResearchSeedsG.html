@@ -2,27 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>اصول البحث اسئلة ذهبية</title>
+    <title>اسئلة ذهبية مؤتمت</title>
 </head>
 <body>
 <div style="text-align: center;">
-
+<center>
     <div align="center" style="width: 50%; height:50%">
-        <form method="POST">
+        <form method="POST" style="align-items: center">
             {% csrf_token %}
 
             <fieldset dir="rtl">
 
-                <legend>سؤال و اربع خيارات</legend>                <p>
-                    <label>رقم الاختبار: <input type="number" name="ExNo" value="1"></label>
+                <legend>سؤال و اربع خيارات</legend>
+                <p>
+                    <label>ترتيب السؤال :<input name="number" type="number"></label>
                 </p>
+
+
                 <p>
                     <label>السؤال : <input name="question" type="text"/></label>
                 </p>
 
                 <p>
                     <label>الجواب 1 : <input name="ans1" type="text"/></label><input name="No" type="radio" value=1>
-
                 </p>
 
                 <p>
@@ -40,16 +42,6 @@
                 <p>
                     <label>التعليل : <input name="why" size="55px;" type="text"/></label>
                 </p>
-                <p>
-                    <label>ترتيب السؤال :<input name="number" type="number"></label>
-                </p>
-
-
-                <p>
-                    <label>السعر(لاول سؤال فقط وهو سعر الامتحان ) : <input name="price" type="number" value="0"/></label>
-                </p>
-
-                <label>نشر<input name="check" type="checkbox" value="checked"></label>
 
                 <input name="add" type="submit" value="تاكيد">
 
@@ -57,11 +49,13 @@
 
         </form>
     </div>
+    </center>
 </div>
 
 
-<div style="text-align: center;">
 
+<div style="text-align: center;">
+<center>
     <div align="center" style="width: 50%; height:50%">
         <form method="POST">
             {% csrf_token %}
@@ -72,7 +66,7 @@
 
                 <!-- Label and input field -->
                 <p>
-                    <label>رقم الملف <input name="id" type="number"/></label>
+                    <label>ترتيب السؤال <input name="number" type="number"/></label>
                 </p>
 
 
@@ -82,16 +76,26 @@
             </fieldset>
         </form>
     </div>
+    </center>
 </div>
 
-<a href="{% url 'AResearchSeeds'%}">الرجوع</a>
-
+<div align="right" dir="rtl" >
 {%for x in names%}
-<p align="right" dir="rtl">
-    {{x.lname}} ترتيب {{x.number}} <b>الرقم </b> ({{x.id}})
-</p>
 
+    <hr>
+    <pre style="font-size: 18px">
+    ترتيب السؤال : {{x.number}}
+    السؤال:   {{x.question}}
+    الجواب 1 :{{x.ans1}}
+    الجواب 2 :{{x.ans2}}
+    الجواب 3 :{{x.ans3}}
+    الجواب 4 :{{x.ans4}}
+    التعليل :{{x.why}}
+    رقم الجواب الصحيح :{{x.No_true}}
+</pre>
 {% endfor %}
-<a href="{% url 'AResearchSeeds'%}">الرجوع</a>
+    </div>
+<a href="{% url 'AResearchSeedsGM'%}">الرجوع</a>
 </body>
+
 </html>

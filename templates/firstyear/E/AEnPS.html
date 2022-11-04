@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>اسئلة الدورات</title>
+</head>
+<body>
+<div style="text-align: center;" dir="rtl">
+        <br><a href="{% url 'AEnPAdd'%}" style="font-size: 18px;"> إضافة دورة </a><br><br>
+    {% for x in name%}
+    <pre style="font-size: 18px">{{x.ExNo}}\{{x.semestery}}     <a href="{% url 'AEnPM' ExNo=x.ExNo semestery=x.semestery%}">تعديل\حذف</a>    <a href="{% url 'AEnP' ExNo=x.ExNo semestery=x.semestery%}"> اضافة\حذف اسئلة</a></pre>
+    {%endfor%}
+
+
+
+</div>
+<a href="{% url 'AEn'%}">الرجوع</a>
+</body>
+</html>

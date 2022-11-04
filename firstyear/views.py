@@ -2,6 +2,13 @@ from django import forms
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
+from .models import AE1
+from .models import AE4
+from .models import AE4M
+from .models import AEG
+from .models import AEGM
+from .models import AEP
+from .models import AEPS
 from .models import AGMAGolden as AGMAG
 from .models import AGMAGoldenM as AGMAGM
 from .models import AGMAPriveos as AGMAP
@@ -12,10 +19,21 @@ from .models import AGrammer4 as AG4
 from .models import AMorphology1 as AM1
 from .models import AMorphology4 as AM4
 from .models import AMorphology4M as AM4M
+from .models import APre_IslamicLiterature as APre
 from .models import AResearchSeeds1 as ARS1
 from .models import AResearchSeeds4 as ARS4
+from .models import AResearchSeeds4M as ARS4M
 from .models import AResearchSeedsG as ARSG
+from .models import AResearchSeedsGM as ARSGM
 from .models import AResearchSeedsP as ARSP
+from .models import AResearchSeedsPS as ARSPS
+from .models import ATH1
+from .models import ATH4
+from .models import ATH4M
+from .models import ATHG
+from .models import ATHGM
+from .models import ATHP
+from .models import ATHPS
 from .models import Application1 as AP1
 from .models import Application2 as AP2
 from .models import Application3 as AP3
@@ -28,6 +46,8 @@ from .models import ApplicationEx4 as APEx4
 from .models import ApplicationEx5 as APEx5
 from .models import ApplicationEx6 as APEx6
 from .models import ApplicationExM as APExM
+from .models import HPre_IslamicLiterature as HPre
+from .models import PPre_IslamicLiterature as PPre
 from .models import Users
 from .models import WGMAGlden as WGMAG
 from .models import WGMAPriveos as WGMAP
@@ -36,10 +56,16 @@ from .models import WMorphology as WM
 from .models import WResearchSeedsG as WRSG
 from .models import WResearchSeedsL as WRSL
 from .models import WResearchSeedsP as WRSP
-from .models import APre_IslamicLiterature as APre
-from .models import PPre_IslamicLiterature as PPre
-from .models import GPre_IslamicLiterature as GPre
-from .models import HPre_IslamicLiterature as HPre
+from .models import WTStatement as WTS
+from .models import WPStatement as WPS
+from .models import WGStatement as WGS
+from .models import WPPStatement as WPPS
+from .models import APStatement1 as APS1
+from .models import APStatement4 as APS4
+from .models import APStatement4M as APS4M
+from .models import ATStatement1 as ATS1
+from .models import ATStatement4 as ATS4
+from .models import ATStatement4M as ATS4M
 
 
 # Create your views here.
@@ -791,7 +817,7 @@ def ApplicationExM(request, id):
         db.publish = publish
         db.save()
         return redirect('ApplicationEx')
-    return render( request, "firstyear/GMA/ApplicationExM.html",{'names': db})
+    return render(request, "firstyear/GMA/ApplicationExM.html", {'names': db})
 
 
 def ApplicationEx(request):
@@ -807,7 +833,7 @@ def ApplicationEx(request):
 
 
 def ApplicationEx1(request):
-    db=APExM.objects.get(id=1)
+    db = APExM.objects.get(id=1)
     list = APEx1.objects.all()
     if request.method == "POST":
         if 'add' in request.POST:
@@ -822,7 +848,7 @@ def ApplicationEx1(request):
             number = request.POST.get('number')
 
             Cdate = APEx1(question=question, ans1=ans1, ans2=ans2, ans3=ans3, ans4=ans4, why=why, No_true=No_true,
-                          number=number,ExNo=db)
+                          number=number, ExNo=db)
             Cdate.save()
 
         elif 'delete' in request.POST:
@@ -835,7 +861,7 @@ def ApplicationEx1(request):
 
 
 def ApplicationEx2(request):
-    db=APExM.objects.get(id=2)
+    db = APExM.objects.get(id=2)
     list = APEx2.objects.all()
     if request.method == "POST":
         if 'add' in request.POST:
@@ -850,7 +876,7 @@ def ApplicationEx2(request):
             number = request.POST.get('number')
 
             Cdate = APEx2(question=question, ans1=ans1, ans2=ans2, ans3=ans3, ans4=ans4, why=why, No_true=No_true,
-                          number=number,ExNo=db)
+                          number=number, ExNo=db)
             Cdate.save()
 
         elif 'delete' in request.POST:
@@ -863,7 +889,7 @@ def ApplicationEx2(request):
 
 
 def ApplicationEx3(request):
-    db=APExM.objects.get(id=3)
+    db = APExM.objects.get(id=3)
 
     list = APEx3.objects.all()
     if request.method == "POST":
@@ -894,7 +920,7 @@ def ApplicationEx3(request):
 
 
 def ApplicationEx4(request):
-    db=APExM.objects.get(id=4)
+    db = APExM.objects.get(id=4)
 
     list = APEx4.objects.all()
     if request.method == "POST":
@@ -912,7 +938,7 @@ def ApplicationEx4(request):
             publish = bool(request.POST.get('check'))
 
             Cdate = APEx4(question=question, ans1=ans1, ans2=ans2, ans3=ans3, ans4=ans4, why=why, No_true=No_true,
-                          number=number,ExNo=db)
+                          number=number, ExNo=db)
             Cdate.save()
 
         elif 'delete' in request.POST:
@@ -925,7 +951,7 @@ def ApplicationEx4(request):
 
 
 def ApplicationEx5(request):
-    db=APExM.objects.get(id=5)
+    db = APExM.objects.get(id=5)
 
     list = APEx5.objects.all()
     if request.method == "POST":
@@ -956,7 +982,7 @@ def ApplicationEx5(request):
 
 
 def ApplicationEx6(request):
-    db=APExM.objects.get(id=6)
+    db = APExM.objects.get(id=6)
     list = APEx6.objects.all()
     if request.method == "POST":
         if 'add' in request.POST:
@@ -1066,6 +1092,12 @@ def AResearchSeeds(request):
     return render(request, 'firstyear/ResearchSeeds/AResearchSeeds.html')
 
 
+def AResearchSeeds1M(request):
+    list = ARS1.objects.all()
+
+    return render(request, 'firstyear/ResearchSeeds/AResearchSeeds1M.html', {'name': list})
+
+
 def AResearchSeeds1(request):
     list = ARS1.objects.all()
     file = Form1(request.POST, request.FILES)
@@ -1074,25 +1106,81 @@ def AResearchSeeds1(request):
             if file.is_valid():
                 name = request.POST.get('name')
                 price = request.POST.get('price')
+                number = request.POST.get('number')
                 publish = bool(request.POST.get('check'))
-
-                Cdate = ARS1(lname=name, lfile=request.FILES['file'], lprice=price, publish=publish)
+                Cdate = ARS1(lname=name, lfile=request.FILES['file'], lprice=price, number=number,
+                             publish=publish)
                 Cdate.save()
+                return redirect('AResearchSeeds1M')
 
-        elif 'delete' in request.POST:
-            id = request.POST.get('id')
-            member = ARS1.objects.get(id=id)
-            instance = ARS1.objects.filter(id=id)
-            instance.delete()
-            member.delete()
     return render(request, 'firstyear/ResearchSeeds/AResearchSeeds1.html', {'names': list, 'form': file})
 
 
-def AResearchSeeds4(request):
-    list = ARS4.objects.all()
+def AResearchSeeds1E(request, number):
+    list = ARS1.objects.get(number=number)
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        publish = bool(request.POST.get('check'))
+        number = request.POST.get("number")
+        list.number = number
+        list.lname = name
+        list.publish = publish
+        list.lprice = price
+        list.save()
+        return redirect('AResearchSeeds1M')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('AResearchSeeds1M')
+
+    return render(request, 'firstyear/ResearchSeeds/AResearchSeeds1E.html', {'name': list})
+
+
+def AResearchSeeds4M(request):
+    list = ARS4M.objects.all()
+
+    return render(request, 'firstyear/ResearchSeeds/AResearchSeeds4M.html', {'names': list})
+
+
+def AResearchSeeds4E(request, number):
+    list = ARS4M.objects.get(number=number)
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        number = request.POST.get('number')
+        publish = bool(request.POST.get('check'))
+        list.name = name
+        list.publish = publish
+        list.lprice = price
+        list.namber = number
+        list.save()
+        return redirect('AResearchSeeds4M')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('AResearchSeeds4M')
+
+    return render(request, 'firstyear/ResearchSeeds/AResearchSeeds4E.html', {'name': list})
+
+
+def AResearchSeeds4Add(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        number = request.POST.get("number")
+        publish = bool(request.POST.get('check'))
+        lprice = request.POST.get("price")
+        Cdata = ARS4M(name=name, number=number, publish=publish, lprice=lprice)
+        Cdata.save()
+        return redirect('AResearchSeeds4M')
+    return render(request, 'firstyear/ResearchSeeds/AResearchSeeds4Add.html')
+
+
+def AResearchSeeds4(request, number):
+    db = ARS4M.objects.get(number=number)
+    list = ARS4.objects.filter(ExNo=db)
     if request.method == "POST":
         if 'add' in request.POST:
-
             question = request.POST.get('question')
             ans1 = request.POST.get('ans1')
             ans2 = request.POST.get('ans2')
@@ -1101,27 +1189,62 @@ def AResearchSeeds4(request):
             why = request.POST.get('why')
             No_true = request.POST.get('No')
             number = request.POST.get('number')
-            price = request.POST.get('price')
-            publish = bool(request.POST.get('check'))
-
             Cdate = ARS4(question=question, ans1=ans1, ans2=ans2, ans3=ans3, ans4=ans4, why=why, No_true=No_true,
-                         number=number, lprice=price, publish=publish)
+                         ExNo=db,
+                         number=number)
             Cdate.save()
 
         elif 'delete' in request.POST:
-            id = request.POST.get('id')
-            member = ARS4.objects.get(id=id)
-            instance = ARS4.objects.filter(id=id)
+            number = request.POST.get("number")
+            member = AM4.objects.get(number=number, ExNo=db)
+            instance = AM4.objects.filter(number=number, ExNo=db)
             instance.delete()
             member.delete()
+
     return render(request, 'firstyear/ResearchSeeds/AResearchSeeds4.html', {'names': list})
 
 
+def AResearchSeedsGM(request):
+    list = ARSGM.objects.first()
+
+    return render(request, 'firstyear/ResearchSeeds/AResearchSeedsGM.html', {'names': list})
+
+
+def AResearchSeedsGE(request):
+    list = ARSGM.objects.first()
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        publish = bool(request.POST.get('check'))
+        list.name = name
+        list.lprice = price
+        list.publish = publish
+        list.save()
+        return redirect('AResearchSeedsGM')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('AResearchSeedsGM')
+
+    return render(request, 'firstyear/ResearchSeeds/AResearchSeedsGE.html', {'name': list})
+
+
+def AResearchSeedsGAdd(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        publish = bool(request.POST.get('check'))
+        lprice = request.POST.get("price")
+        Cdata = ARSGM(name=name, publish=publish, lprice=lprice)
+        Cdata.save()
+        return redirect('AResearchSeedsGM')
+    return render(request, 'firstyear/ResearchSeeds/AResearchSeedsGAdd.html')
+
+
 def AResearchSeedsG(request):
+    db = ARSGM.objects.first()
     list = ARSG.objects.all()
     if request.method == "POST":
         if 'add' in request.POST:
-
             question = request.POST.get('question')
             ans1 = request.POST.get('ans1')
             ans2 = request.POST.get('ans2')
@@ -1130,27 +1253,65 @@ def AResearchSeedsG(request):
             why = request.POST.get('why')
             No_true = request.POST.get('No')
             number = request.POST.get('number')
-            price = request.POST.get('price')
-            publish = bool(request.POST.get('check'))
 
             Cdate = ARSG(question=question, ans1=ans1, ans2=ans2, ans3=ans3, ans4=ans4, why=why, No_true=No_true,
-                         number=number, lprice=price, publish=publish)
+                         number=number, ExNo=db)
             Cdate.save()
 
         elif 'delete' in request.POST:
-            id = request.POST.get('id')
-            member = ARSG.objects.get(id=id)
-            instance = ARSG.objects.filter(id=id)
+            number = request.POST.get("number")
+            member = ARSG.objects.get(number=number)
+            instance = ARSG.objects.get(number=number)
             instance.delete()
             member.delete()
     return render(request, 'firstyear/ResearchSeeds/AResearchSeedsG.html', {'names': list})
 
 
-def AResearchSeedsP(request):
-    list = ARSP.objects.all()
+def AResearchSeedsPS(request):
+    list = ARSPS.objects.all()
+    return render(request, 'firstyear/ResearchSeeds/AResearchSeedsPS.html', {'name': list})
+
+
+def AResearchSeedsPAdd(request):
     if request.method == "POST":
         if 'add' in request.POST:
-            ExNo = request.POST.get('NoEx')
+            ExNo = request.POST.get('ExNo')
+            semestery = request.POST.get('semestery')
+            lprice = request.POST.get('price')
+            publish = bool(request.POST.get('check'))
+            Cdate = ARSPS(ExNo=ExNo, semestery=semestery, publish=publish, lprice=lprice)
+            Cdate.save()
+            return redirect('AResearchSeedsPS')
+
+    return render(request, 'firstyear/ResearchSeeds/AResearchSeedsPAdd.html')
+
+
+def AResearchSeedsPM(request, ExNo, semestery):
+    list = ARSPS.objects.get(ExNo=ExNo, semestery=semestery)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            ExNo = request.POST.get('ExNo')
+            semestery = request.POST.get('semestery')
+            lprice = request.POST.get('price')
+            publish = bool(request.POST.get('check'))
+            list.ExNo = ExNo
+            list.semestery = semestery
+            list.lprice = lprice
+            list.publish = publish
+            list.save()
+        if 'delete' in request.POST:
+            list.delete()
+            return redirect('AResearchSeedsPS')
+
+    return render(request, 'firstyear/ResearchSeeds/AResearchSeedsPM.html', {'name': list})
+
+
+def AResearchSeedsP(request, ExNo, semestery):
+    PreviosS = ARSPS.objects.get(ExNo=ExNo, semestery=semestery)
+    list = ARSP.objects.filter(PreviosS=PreviosS)
+    if request.method == "POST":
+        if 'add' in request.POST:
+
             question = request.POST.get('question')
             ans1 = request.POST.get('ans1')
             ans2 = request.POST.get('ans2')
@@ -1159,27 +1320,28 @@ def AResearchSeedsP(request):
             why = request.POST.get('why')
             No_true = request.POST.get('No')
             number = request.POST.get('number')
-            price = request.POST.get('price')
-            publish = bool(request.POST.get('check'))
-
-            Cdate = ARSP(ExNo=ExNo, question=question, ans1=ans1, ans2=ans2, ans3=ans3, ans4=ans4, why=why,
-                         No_true=No_true,
-                         number=number, lprice=price, publish=publish)
+            Cdate = ARSP(PreviosS=PreviosS, question=question, ans1=ans1, ans2=ans2, ans3=ans3, ans4=ans4, why=why,
+                         No_true=No_true, number=number)
             Cdate.save()
 
         elif 'delete' in request.POST:
-            id = request.POST.get('id')
-            member = ARSP.objects.get(id=id)
-            instance = ARSP.objects.filter(id=id)
+            number = request.POST.get("number")
+            member = ARSP.objects.get(number=number, PreviosS=PreviosS)
+            instance = ARSP.objects.filter(number=number, PreviosS=PreviosS)
             instance.delete()
             member.delete()
     return render(request, 'firstyear/ResearchSeeds/AResearchSeedsP.html', {'names': list})
 
+
 def Pre_IslamicLiterature(request):
-    return render(request,'firstyear/Pre_IslamicLiterature/Pre_IslamicLiterature.html',)
+    return render(request, 'firstyear/Pre_IslamicLiterature/Pre_IslamicLiterature.html', )
+
+
 def HPre_IslamicLiteratureM(request):
-    list=HPre.objects.all()
-    return render(request,'firstyear/Pre_IslamicLiterature/HPre_IslamicLiteratureM.html', {'name': list})
+    list = HPre.objects.all()
+    return render(request, 'firstyear/Pre_IslamicLiterature/HPre_IslamicLiteratureM.html', {'name': list})
+
+
 def HPre_IslamicLiteratureE(request, number):
     list = HPre.objects.get(number=number)
     if 'add' in request.POST:
@@ -1196,8 +1358,9 @@ def HPre_IslamicLiteratureE(request, number):
 
     if 'delete' in request.POST:
         list.delete()
-        return redirect('WGrammarM')
+        return redirect('HPre_IslamicLiteratureM')
     return render(request, 'firstyear/Pre_IslamicLiterature/HPre_IslamicLiteratureE.html', {'name': list})
+
 
 def HPre_IslamicLiterature(request):
     list = HPre.objects.all()
@@ -1209,16 +1372,21 @@ def HPre_IslamicLiterature(request):
                 price = request.POST.get('price')
                 number = request.POST.get('number')
                 publish = bool(request.POST.get('check'))
-                Cdate = HPre.objects.create(lname=name, lfile=request.FILES['file'], lprice=price, number=number,publish=publish)
+                Cdate = HPre.objects.create(lname=name, lfile=request.FILES['file'], lprice=price, number=number,
+                                            publish=publish)
                 Cdate.save()
-                return redirect(WGrammarM)
+                return redirect("HPre_IslamicLiteratureM")
 
     return render(request, 'firstyear/Pre_IslamicLiterature/HPre_IslamicLiterature.html', {'names': list, 'form': file})
+
+
 def APre_IslamicLiteratureM(request):
-    list=APre.objects.all()
-    return render(request,'firstyear/Pre_IslamicLiterature/APre_IslamicLiteratureM.html', {'name': list})
+    list = APre.objects.all()
+    return render(request, 'firstyear/Pre_IslamicLiterature/APre_IslamicLiteratureM.html', {'name': list})
+
+
 def APre_IslamicLiteratureE(request, number):
-    list = AHPre.objects.get(number=number)
+    list = APre.objects.get(number=number)
     if 'add' in request.POST:
         name = request.POST.get('name')
         price = request.POST.get('price')
@@ -1236,6 +1404,7 @@ def APre_IslamicLiteratureE(request, number):
         return redirect('APre_IslamicLiteratureM')
     return render(request, 'firstyear/Pre_IslamicLiterature/APre_IslamicLiteratureE.html', {'name': list})
 
+
 def APre_IslamicLiterature(request):
     list = APre.objects.all()
     file = Form1(request.POST, request.FILES)
@@ -1246,8 +1415,729 @@ def APre_IslamicLiterature(request):
                 price = request.POST.get('price')
                 number = request.POST.get('number')
                 publish = bool(request.POST.get('check'))
-                Cdate = APre.objects.create(lname=name, lfile=request.FILES['file'], lprice=price, number=number,publish=publish)
+                Cdate = APre.objects.create(lname=name, lfile=request.FILES['file'], lprice=price, number=number,
+                                            publish=publish)
                 Cdate.save()
                 return redirect('APre_IslamicLiteratureM')
 
     return render(request, 'firstyear/Pre_IslamicLiterature/APre_IslamicLiterature.html', {'names': list, 'form': file})
+
+
+
+
+def PPre_IslamicLiteratureM(request):
+    list = PPre.objects.all()
+    return render(request, 'firstyear/Pre_IslamicLiterature/PPre_IslamicLiteratureM.html', {'name': list})
+
+
+def PPre_IslamicLiteratureE(request, pyear, number):
+    list = PPre.objects.get(pyear=pyear, number=number)
+    print(list)
+    if 'add' in request.POST:
+        pyear = request.POST.get('pyear')
+        price = request.POST.get('price')
+        number = request.POST.get('number')
+        publish = bool(request.POST.get('check'))
+        list.pyear = pyear
+        list.publish = publish
+        list.lprice = price
+        list.namber = number
+        list.save()
+        return redirect('PPre_IslamicLiteratureM')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('PPre_IslamicLiteratureM')
+    return render(request, 'firstyear/Pre_IslamicLiterature/PPre_IslamicLiteratureM.html', {'name': list})
+
+
+def PPre_IslamicLiterature(request):
+    file = Form1(request.POST, request.FILES)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            if file.is_valid():
+                pyear = request.POST.get('pyear')
+                price = request.POST.get('price')
+                number = request.POST.get('number')
+                publish = bool(request.POST.get('check'))
+                Cdate = PPre(pyear=pyear, lfile=request.FILES['file'], lprice=price, number=number, publish=publish)
+                Cdate.save()
+                return redirect('PPre_IslamicLiteratureM')
+
+    return render(request, 'firstyear/Pre_IslamicLiterature/PPre_IslamicLiterature.html', {'form': file})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def AEn(request):
+    return render(request, 'firstyear/E/ATh.html')
+
+
+def AEn1M(request):
+    list = AE1.objects.all()
+
+    return render(request, 'firstyear/E/AEn1M.html', {'name': list})
+
+
+def AEn1(request):
+    list = AE1.objects.all()
+    file = Form1(request.POST, request.FILES)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            if file.is_valid():
+                name = request.POST.get('name')
+                price = request.POST.get('price')
+                number = request.POST.get('number')
+                publish = bool(request.POST.get('check'))
+                Cdate = AE1(lname=name, lfile=request.FILES['file'], lprice=price, number=number,
+                            publish=publish)
+                Cdate.save()
+                return redirect('AEn1M')
+
+    return render(request, 'firstyear/E/ATh1.html', {'names': list, 'form': file})
+
+
+def AEn1E(request, number):
+    list = AE1.objects.get(number=number)
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        publish = bool(request.POST.get('check'))
+        number = request.POST.get("number")
+        list.number = number
+        list.lname = name
+        list.publish = publish
+        list.lprice = price
+        list.save()
+        return redirect('AEn1M')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('AEn1M')
+
+    return render(request, 'firstyear/E/AEn1E.html', {'name': list})
+
+
+def AEn4M(request):
+    list = AE4M.objects.all()
+
+    return render(request, 'firstyear/E/AEn4M.html', {'names': list})
+
+
+def AEn4E(request, number):
+    list = AE4M.objects.get(number=number)
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        number = request.POST.get('number')
+        publish = bool(request.POST.get('check'))
+        list.name = name
+        list.publish = publish
+        list.lprice = price
+        list.namber = number
+        list.save()
+        return redirect('AEn4M')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('AEn4M')
+
+    return render(request, 'firstyear/E/AEn4E.html', {'name': list})
+
+
+def AEn4Add(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        number = request.POST.get("number")
+        publish = bool(request.POST.get('check'))
+        lprice = request.POST.get("price")
+        Cdata = AE4M(name=name, number=number, publish=publish, lprice=lprice)
+        Cdata.save()
+        return redirect('AEn4M')
+    return render(request, 'firstyear/E/AEn4Add.html')
+
+
+def AEn4(request, number):
+    db = AE4M.objects.get(number=number)
+    list = AE4.objects.filter(ExNo=db)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            question = request.POST.get('question')
+            ans1 = request.POST.get('ans1')
+            ans2 = request.POST.get('ans2')
+            ans3 = request.POST.get('ans3')
+            ans4 = request.POST.get('ans4')
+            why = request.POST.get('why')
+            No_true = request.POST.get('No')
+            number = request.POST.get('number')
+            Cdate = AE4(question=question, ans1=ans1, ans2=ans2, ans3=ans3, ans4=ans4, why=why, No_true=No_true,
+                        ExNo=db,
+                        number=number)
+            Cdate.save()
+
+        elif 'delete' in request.POST:
+            number = request.POST.get("number")
+            member = AE4.objects.get(number=number, ExNo=db)
+            instance = AE4.objects.filter(number=number, ExNo=db)
+            instance.delete()
+            member.delete()
+
+    return render(request, 'firstyear/E/AEn4.html', {'names': list})
+
+
+def AEnGM(request):
+    list = AEGM.objects.first()
+
+    return render(request, 'firstyear/E/AEnGM.html', {'names': list})
+
+
+def AEnGE(request):
+    list = AEGM.objects.first()
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        publish = bool(request.POST.get('check'))
+        list.name = name
+        list.lprice = price
+        list.publish = publish
+        list.save()
+        return redirect('AEnGM')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('AEnGM')
+
+    return render(request, 'firstyear/E/AEnGE.html', {'name': list})
+
+
+def AEnGAdd(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        publish = bool(request.POST.get('check'))
+        lprice = request.POST.get("price")
+        Cdata = AEGM(name=name, publish=publish, lprice=lprice)
+        Cdata.save()
+        return redirect('AEnGM')
+    return render(request, 'firstyear/E/AEnGAdd.html')
+
+
+def AEnG(request):
+    db = AEGM.objects.first()
+    list = AEG.objects.all()
+    if request.method == "POST":
+        if 'add' in request.POST:
+            question = request.POST.get('question')
+            ans1 = request.POST.get('ans1')
+            ans2 = request.POST.get('ans2')
+            ans3 = request.POST.get('ans3')
+            ans4 = request.POST.get('ans4')
+            why = request.POST.get('why')
+            No_true = request.POST.get('No')
+            number = request.POST.get('number')
+
+            Cdate = AEG(question=question, ans1=ans1, ans2=ans2, ans3=ans3, ans4=ans4, why=why, No_true=No_true,
+                        number=number, ExNo=db)
+            Cdate.save()
+
+        elif 'delete' in request.POST:
+            number = request.POST.get("number")
+            member = AEG.objects.get(number=number)
+            instance = AEG.objects.get(number=number)
+            instance.delete()
+            member.delete()
+    return render(request, 'firstyear/E/AEnG.html', {'names': list})
+
+
+def AEnPS(request):
+    list = AEPS.objects.all()
+    return render(request, 'firstyear/E/AEnPS.html', {'name': list})
+
+
+def AEnPAdd(request):
+    if request.method == "POST":
+        if 'add' in request.POST:
+            ExNo = request.POST.get('ExNo')
+            semestery = request.POST.get('semestery')
+            lprice = request.POST.get('price')
+            publish = bool(request.POST.get('check'))
+            Cdate = AEPS(ExNo=ExNo, semestery=semestery, publish=publish, lprice=lprice)
+            Cdate.save()
+            return redirect('AEnPS')
+
+    return render(request, 'firstyear/E/AEnPAdd.html')
+
+
+def AEnPM(request, ExNo, semestery):
+    list = AEPS.objects.get(ExNo=ExNo, semestery=semestery)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            ExNo = request.POST.get('ExNo')
+            semestery = request.POST.get('semestery')
+            lprice = request.POST.get('price')
+            publish = bool(request.POST.get('check'))
+            list.ExNo = ExNo
+            list.semestery = semestery
+            list.lprice = lprice
+            list.publish = publish
+            list.save()
+        if 'delete' in request.POST:
+            list.delete()
+            return redirect('AEnPS')
+
+    return render(request, 'firstyear/E/AEnPM.html', {'name': list})
+
+
+def AEnP(request, ExNo, semestery):
+    PreviosS = AEPS.objects.get(ExNo=ExNo, semestery=semestery)
+    list = AEP.objects.filter(PreviosS=PreviosS)
+    if request.method == "POST":
+        if 'add' in request.POST:
+
+            question = request.POST.get('question')
+            ans1 = request.POST.get('ans1')
+            ans2 = request.POST.get('ans2')
+            ans3 = request.POST.get('ans3')
+            ans4 = request.POST.get('ans4')
+            why = request.POST.get('why')
+            No_true = request.POST.get('No')
+            number = request.POST.get('number')
+            Cdate = AEP(PreviosS=PreviosS, question=question, ans1=ans1, ans2=ans2, ans3=ans3, ans4=ans4, why=why,
+                        No_true=No_true, number=number)
+            Cdate.save()
+
+        elif 'delete' in request.POST:
+            number = request.POST.get("number")
+            member = AEP.objects.get(number=number, PreviosS=PreviosS)
+            instance = AEP.objects.filter(number=number, PreviosS=PreviosS)
+            instance.delete()
+            member.delete()
+    return render(request, 'firstyear/E/AEnP.html', {'names': list})
+
+
+def ATh(request):
+    return render(request, 'firstyear/TH/ATh.html')
+
+
+def ATh1M(request):
+    list = ATH1.objects.all()
+
+    return render(request, 'firstyear/TH/ATh1M.html', {'name': list})
+
+
+def ATh1(request):
+    list = ATH1.objects.all()
+    file = Form1(request.POST, request.FILES)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            if file.is_valid():
+                name = request.POST.get('name')
+                price = request.POST.get('price')
+                number = request.POST.get('number')
+                publish = bool(request.POST.get('check'))
+                Cdate = ATH1(lname=name, lfile=request.FILES['file'], lprice=price, number=number,
+                             publish=publish)
+                Cdate.save()
+                return redirect('ATh1M')
+
+    return render(request, 'firstyear/TH/ATh1.html', {'names': list, 'form': file})
+
+
+def ATh1E(request, number):
+    list = ATH1.objects.get(number=number)
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        publish = bool(request.POST.get('check'))
+        number = request.POST.get("number")
+        list.number = number
+        list.lname = name
+        list.publish = publish
+        list.lprice = price
+        list.save()
+        return redirect('ATh1M')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('ATh1M')
+
+    return render(request, 'firstyear/TH/ATh1E.html', {'name': list})
+
+
+def ATh4M(request):
+    list = ATH4M.objects.all()
+
+    return render(request, 'firstyear/TH/ATh4M.html', {'names': list})
+
+
+def ATh4E(request, number):
+    list = ATH4M.objects.get(number=number)
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        number = request.POST.get('number')
+        publish = bool(request.POST.get('check'))
+        list.name = name
+        list.publish = publish
+        list.lprice = price
+        list.namber = number
+        list.save()
+        return redirect('ATh4M')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('ATh4M')
+
+    return render(request, 'firstyear/TH/ATh4E.html', {'name': list})
+
+
+def ATh4Add(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        number = request.POST.get("number")
+        publish = bool(request.POST.get('check'))
+        lprice = request.POST.get("price")
+        Cdata = ATH4M(name=name, number=number, publish=publish, lprice=lprice)
+        Cdata.save()
+        return redirect('ATh4M')
+    return render(request, 'firstyear/TH/ATh4Add.html')
+
+
+def ATh4(request, number):
+    db = ATH4M.objects.get(number=number)
+    list = ATH4.objects.filter(ExNo=db)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            question = request.POST.get('question')
+            ans1 = request.POST.get('ans1')
+            ans2 = request.POST.get('ans2')
+            ans3 = request.POST.get('ans3')
+            ans4 = request.POST.get('ans4')
+            why = request.POST.get('why')
+            No_true = request.POST.get('No')
+            number = request.POST.get('number')
+            Cdate = ATH4(question=question, ans1=ans1, ans2=ans2, ans3=ans3, ans4=ans4, why=why, No_true=No_true,
+                         ExNo=db,
+                         number=number)
+            Cdate.save()
+
+        elif 'delete' in request.POST:
+            number = request.POST.get("number")
+            member = ATH4.objects.get(number=number, ExNo=db)
+            instance = ATH4.objects.filter(number=number, ExNo=db)
+            instance.delete()
+            member.delete()
+
+    return render(request, 'firstyear/TH/ATh4.html', {'names': list})
+
+
+def AThGM(request):
+    list = ATHGM.objects.first()
+
+    return render(request, 'firstyear/TH/AThGM.html', {'names': list})
+
+
+def AThGE(request):
+    list = ATHGM.objects.first()
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        publish = bool(request.POST.get('check'))
+        list.name = name
+        list.lprice = price
+        list.publish = publish
+        list.save()
+        return redirect('AThGM')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('AThGM')
+
+    return render(request, 'firstyear/TH/AThGE.html', {'name': list})
+
+
+def AThGAdd(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        publish = bool(request.POST.get('check'))
+        lprice = request.POST.get("price")
+        Cdata = ATHGM(name=name, publish=publish, lprice=lprice)
+        Cdata.save()
+        return redirect('AThGM')
+    return render(request, 'firstyear/TH/AThGAdd.html')
+
+
+def AThG(request):
+    db = ATHGM.objects.first()
+    list = ATHG.objects.all()
+    if request.method == "POST":
+        if 'add' in request.POST:
+            question = request.POST.get('question')
+            ans1 = request.POST.get('ans1')
+            ans2 = request.POST.get('ans2')
+            ans3 = request.POST.get('ans3')
+            ans4 = request.POST.get('ans4')
+            why = request.POST.get('why')
+            No_true = request.POST.get('No')
+            number = request.POST.get('number')
+
+            Cdate = ATHG(question=question, ans1=ans1, ans2=ans2, ans3=ans3, ans4=ans4, why=why, No_true=No_true,
+                         number=number, ExNo=db)
+            Cdate.save()
+
+        elif 'delete' in request.POST:
+            number = request.POST.get("number")
+            member = ATHG.objects.get(number=number)
+            instance = ATHG.objects.get(number=number)
+            instance.delete()
+            member.delete()
+    return render(request, 'firstyear/TH/AThG.html', {'names': list})
+
+
+def AThPS(request):
+    list = ATHPS.objects.all()
+    return render(request, 'firstyear/TH/AThPS.html', {'name': list})
+
+
+def AThPAdd(request):
+    if request.method == "POST":
+        if 'add' in request.POST:
+            ExNo = request.POST.get('ExNo')
+            semestery = request.POST.get('semestery')
+            lprice = request.POST.get('price')
+            publish = bool(request.POST.get('check'))
+            Cdate = ATHPS(ExNo=ExNo, semestery=semestery, publish=publish, lprice=lprice)
+            Cdate.save()
+            return redirect('AThPS')
+
+    return render(request, 'firstyear/TH/AThPAdd.html')
+
+
+def AThPM(request, ExNo, semestery):
+    list = ATHPS.objects.get(ExNo=ExNo, semestery=semestery)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            ExNo = request.POST.get('ExNo')
+            semestery = request.POST.get('semestery')
+            lprice = request.POST.get('price')
+            publish = bool(request.POST.get('check'))
+            list.ExNo = ExNo
+            list.semestery = semestery
+            list.lprice = lprice
+            list.publish = publish
+            list.save()
+        if 'delete' in request.POST:
+            list.delete()
+            return redirect('AThPS')
+
+    return render(request, 'firstyear/TH/AThPM.html', {'name': list})
+
+
+def AThP(request, ExNo, semestery):
+    PreviosS = ATHPS.objects.get(ExNo=ExNo, semestery=semestery)
+    list = ATHP.objects.filter(PreviosS=PreviosS)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            question = request.POST.get('question')
+            ans1 = request.POST.get('ans1')
+            ans2 = request.POST.get('ans2')
+            ans3 = request.POST.get('ans3')
+            ans4 = request.POST.get('ans4')
+            why = request.POST.get('why')
+            No_true = request.POST.get('No')
+            number = request.POST.get('number')
+            Cdate = ATHP(PreviosS=PreviosS, question=question, ans1=ans1, ans2=ans2, ans3=ans3, ans4=ans4, why=why,
+                         No_true=No_true, number=number)
+            Cdate.save()
+
+        elif 'delete' in request.POST:
+            number = request.POST.get("number")
+            member = ATHP.objects.get(number=number, PreviosS=PreviosS)
+            instance = ATHP.objects.filter(number=number, PreviosS=PreviosS)
+            instance.delete()
+            member.delete()
+    return render(request, 'firstyear/TH/AThP.html', {'names': list})
+
+def Statement(requrst):
+    return render(requrst,'firstyear/Statement/Statement.html')
+def WStatement(requrst):
+    return render(requrst,'firstyear/Statement/WStatement.html')
+def AStatement(requrst):
+    return render(requrst,'firstyear/Statement/AStatement.html')
+
+def WTStatementM(request):
+    list = WTS.objects.all()
+    return render(request, 'firstyear/Statement/WTStatementM.html', {'name': list})
+
+
+def WTStatementE(request, number):
+    list = WTS.objects.get(number=number)
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        number = request.POST.get('number')
+        publish = bool(request.POST.get('check'))
+        list.name = name
+        list.publish = publish
+        list.lprice = price
+        list.namber = number
+        list.save()
+        return redirect('WTStatementM')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('WTStatementM')
+    return render(request,'firstyear/Statement/WTStatementE.html', {'name': list})
+
+
+def WTStatement(request):
+    list = WTS.objects.all()
+    file = Form1(request.POST, request.FILES)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            if file.is_valid():
+                name = request.POST.get('name')
+                price = request.POST.get('price')
+                number = request.POST.get('number')
+                publish = bool(request.POST.get('check'))
+                Cdate = WTS.objects.create(lname=name, lfile=request.FILES['file'], lprice=price, number=number,
+                                          publish=publish)
+                Cdate.save()
+                return redirect("WTStatementM")
+
+    return render(request, 'firstyear/Statement/WTStatement.html', {'names': list, 'form': file})
+
+def WPStatementM(request):
+    list = WPS.objects.all()
+    return render(request, 'firstyear/Statement/WPStatementM.html', {'name': list})
+
+
+def WPStatementE(request, number):
+    list = WPS.objects.get(number=number)
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        number = request.POST.get('number')
+        publish = bool(request.POST.get('check'))
+        list.name = name
+        list.publish = publish
+        list.lprice = price
+        list.namber = number
+        list.save()
+        return redirect('WPStatementM')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('WPStatementM')
+    return render(request,'firstyear/Statement/WPStatementE.html', {'name': list})
+
+
+def WPStatement(request):
+    list = WPS.objects.all()
+    file = Form1(request.POST, request.FILES)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            if file.is_valid():
+                name = request.POST.get('name')
+                price = request.POST.get('price')
+                number = request.POST.get('number')
+                publish = bool(request.POST.get('check'))
+                Cdate = WPS.objects.create(lname=name, lfile=request.FILES['file'], lprice=price, number=number,
+                                          publish=publish)
+                Cdate.save()
+                return redirect("WPStatementM")
+
+    return render(request, 'firstyear/Statement/WPStatement.html', {'names': list, 'form': file})
+
+
+def WGStatementM(request):
+    list = WGS.objects.first()
+    return render(request,  'firstyear/Statement/WGStatementM.html', {'name': list})
+
+
+def WGStatement(request):
+    list = WGS.objects.first()
+    file = Form1(request.POST, request.FILES)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            if file.is_valid():
+                name = request.POST.get('name')
+                price = request.POST.get('price')
+                publish = bool(request.POST.get('check'))
+                Cdate = WGS(lname=name, lfile=request.FILES['file'], lprice=price, publish=publish)
+                Cdate.save()
+                return redirect('WGStatementM')
+    return render(request, 'firstyear/Statement/WGStatement.html', {'names': list, 'form': file})
+
+
+def WGStatementE(request):
+    list = WGS.objects.first()
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        publish = bool(request.POST.get('check'))
+        list.lname = name
+        list.publish = publish
+        list.lprice = price
+        list.save()
+        return redirect('WGStatementM')
+
+    if 'delete' in request.POST:
+        member = WGS.objects.all()
+        member.delete()
+        return redirect('WGStatementM')
+
+    return render(request, 'firstyear/Statement/WGStatementE.html', {'name': list})
+
+
+def WPPStatementM(request):
+    list = WPPS.objects.all()
+    return render(request, 'firstyear/Statement/WPPStatementM.html', {'name': list})
+
+
+def WPPStatementE(request, pyear, number):
+    list = WPPS.objects.get(pyear=pyear, number=number)
+    print(list)
+    if 'add' in request.POST:
+        pyear = request.POST.get('pyear')
+        price = request.POST.get('price')
+        number = request.POST.get('number')
+        publish = bool(request.POST.get('check'))
+        list.pyear = pyear
+        list.publish = publish
+        list.lprice = price
+        list.namber = number
+        list.save()
+        return redirect('WPPStatementM')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('WPPStatementM')
+    return render(request, 'firstyear/Statement/WPPStatementE.html', {'name': list})
+
+
+def WPPStatement(request):
+    file = Form1(request.POST, request.FILES)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            if file.is_valid():
+                pyear = request.POST.get('pyear')
+                price = request.POST.get('price')
+                number = request.POST.get('number')
+                publish = bool(request.POST.get('check'))
+                Cdate = WPPS(pyear=pyear, lfile=request.FILES['file'], lprice=price, number=number, publish=publish)
+                Cdate.save()
+                return redirect('WPPStatementM')
+
+    return render(request, 'firstyear/Statement/WPPStatement.html', {'form': file})
+

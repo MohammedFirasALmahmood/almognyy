@@ -2,14 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>سؤال و جواب</title>
+    <title>أصول البحث 1 سؤال و جواب</title>
 </head>
 <body>
-{%load static%}
-{% block containt %}
 
 <div style="text-align: center;">
-
+    <center>
     <div align="center" style="width: 50%; height:50%">
         <form action="" enctype="multipart/form-data" method="POST">
             {% csrf_token %}
@@ -30,6 +28,9 @@
                 <p>
                     <label>سعر الملف : <input name="price" type="number"></label>
                 </p>
+                <p>
+                    <label>ترتيب الملف : <input name="number" type="number"></label>
+                </p>
 
 
                 <label>نشر<input name="check" type="checkbox" value="checked"></label>
@@ -39,44 +40,10 @@
             </fieldset>
         </form>
     </div>
+</center>
 </div>
 
-
-
-<div style="text-align: center;">
-
-    <div align="center" style="width: 50%; height:50%">
-        <form method="POST">
-            {% csrf_token %}
-
-            <fieldset dir="rtl">
-
-                <legend>حذف الملف</legend>
-
-                <!-- Label and input field -->
-                <p>
-                    <label>رقم الملف <input name="id" type="number"/></label>
-                </p>
-
-
-                <input name="delete" type="submit" value="تاكيد">
-
-
-            </fieldset>
-        </form>
-    </div>
-</div>
-
-{%endblock containt%}
-<a href="{% url 'AResearchSeeds'%}">الرجوع</a>
-{%for x in names%}
-<p align="right" dir="rtl">
-    {{x.lname}} ترتيب {{x.number}} <b>الرقم </b> ({{x.id}})
-</p>
-
-{% endfor %}
-<a href="{% url 'AResearchSeeds'%}">الرجوع</a>
+<a href="{% url 'AResearchSeeds1M'%}">الرجوع</a>
 
 </body>
-
 </html>

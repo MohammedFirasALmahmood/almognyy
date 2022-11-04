@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>اسئلة ذهبية</title>
+</head>
+<body>
+<div style="text-align: center;" dir="rtl">
+    {%if name.lname %}
+    <pre style="font-size: 18px">{{name.lname}}    <a href="{% url 'WGStatementE' %}">تعديل\حذف</a>    </pre>
+    {%else %}
+    <br><a href="{% url 'WGStatement'%}" style="font-size: 18px;"> إضافة ملف </a><br><br>
+    {%endif%}
+
+
+
+
+
+</div>
+<a href="{% url 'WStatement'%}">الرجوع</a>
+
+</body>
+</html>

@@ -1,8 +1,6 @@
 from django.urls import path
 
 from . import views
-
-
 urlpatterns = [
     path('', views.login, name="login"),
     path('register/', views.register, name="register"),
@@ -62,15 +60,82 @@ urlpatterns = [
     path('main/firstsemester/GMA/Application/ApplicationEx/ApplicationEx6', views.ApplicationEx6, name='ApplicationEx6'),
     path('main/firstsemester/GMA/Application/ApplicationEx/ApplicationExM/<int:id>', views.ApplicationExM, name='ApplicationExM'),
     path('main/firstsemester/ResearchSeeds', views.ResearchSeeds, name='ResearchSeeds'),
-    path('main/firstsemester/ResearchSeeds/WResearchSeeds', views.WResearchSeeds, name='WResearchSeeds'),
-    path('main/firstsemester/ResearchSeeds/WResearchSeeds/WResearchSeedsL', views.WResearchSeedsL, name='WResearchSeedsL'),
-    path('main/firstsemester/ResearchSeeds/WResearchSeeds/WResearchSeedsG', views.WResearchSeedsG, name='WResearchSeedsG'),
-    path('main/firstsemester/ResearchSeeds/WResearchSeeds/WResearchSeedsP', views.WResearchSeedsP, name='WResearchSeedsP'),
     path('main/firstsemester/ResearchSeeds/AResearchSeeds', views.AResearchSeeds, name='AResearchSeeds'),
-    path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeeds1', views.AResearchSeeds1, name='AResearchSeeds1'),
-    path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeeds4', views.AResearchSeeds4, name='AResearchSeeds4'),
-    path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeedsG', views.AResearchSeedsG, name='AResearchSeedsG'),
-    path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeedsP', views.AResearchSeedsP, name='AResearchSeedsP'),
+    path('main/firstsemester/GMA/AGMA/AMorphology/AMorphology1M/AMorphology1', views.AMorphology1, name='AMorphology1'),
+    path('main/firstsemester/GMA/AGMA/AMorphology/AMorphology1M/AMorphology1E/<int:number>', views.AMorphology1E, name='AMorphology1E'),
+    path('main/firstsemester/GMA/AGMA/AMorphology/AMorphology1M', views.AMorphology1M, name='AMorphology1M'),
+    path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeeds1M/AResearchSeeds1', views.AResearchSeeds1, name='AResearchSeeds1'),
+    path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeeds1M/AResearchSeeds1E/<int:number>', views.AResearchSeeds1E, name='AResearchSeeds1E'),
+    path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeeds1M', views.AResearchSeeds1M, name='AResearchSeeds1M'),
+    path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeeds4M', views.AResearchSeeds4M, name='AResearchSeeds4M'),
+    path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeeds4M/AResearchSeeds4Add', views.AResearchSeeds4Add,name='AResearchSeeds4Add'),
+    path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeeds4M/AResearchSeeds4E/<int:number>', views.AResearchSeeds4E,name='AResearchSeeds4E'),
+    path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeeds4M/AResearchSeeds4/<int:number>', views.AResearchSeeds4,name='AResearchSeeds4'),
+
+    path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeedsGM', views.AResearchSeedsGM, name='AResearchSeedsGM'),
+    path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeedsGM/AResearchSeedsG', views.AResearchSeedsG, name='AResearchSeedsG'),
+    path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeedsGM/AResearchSeedsGE', views.AResearchSeedsGE, name='AResearchSeedsGE'),
+    path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeedsGM/AResearchSeedsGAdd', views.AResearchSeedsGAdd, name='AResearchSeedsGAdd'),
+
+    path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeedsPS', views.AResearchSeedsPS, name='AResearchSeedsPS'),
+    path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeedsPS/AResearchSeedsPAdd', views.AResearchSeedsPAdd, name='AResearchSeedsPAdd'),
+    path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeedsPS/AResearchSeedsPM/<int:ExNo>/<int:semestery>', views.AResearchSeedsPM, name='AResearchSeedsPM'),
+    path('main/firstsemester/ResearchSeeds/AResearchSeeds/AResearchSeedsPS/AResearchSeedsP/<int:ExNo>/<int:semestery>', views.AResearchSeedsP, name='AResearchSeedsP'),
+
+    path('main/firstsemester/E/AE', views.AEn, name='AEn'),
+    path('main/firstsemester/E/AE/AEn1M/AEn1', views.AEn1, name='AEn1'),
+    path('main/firstsemester/E/AE/AEn1M/AEn1E/<int:number>', views.AEn1E, name='AEn1E'),
+    path('main/firstsemester/E/AE/En1M', views.AEn1M, name='AEn1M'),
+    path('main/firstsemester/E/AE/AEn4M', views.AEn4M, name='AEn4M'),
+    path('main/firstsemester/E/AE/AEn4M/AEn4Add', views.AEn4Add,name='AEn4Add'),
+    path('main/firstsemester/E/AE/AEn4M/AEn4E/<int:number>', views.AEn4E,name='AEn4E'),
+    path('main/firstsemester/E/AE/AEn4M/AEn4/<int:number>', views.AEn4,name='AEn4'),
+
+    path('main/firstsemester/E/AE/AEnGM', views.AEnGM, name='AEnGM'),
+    path('main/firstsemester/E/AE/AEnGM/AEnG', views.AEnG, name='AEnG'),
+    path('main/firstsemester/E/AE/AEnGM/AEnGE', views.AEnGE, name='AEnGE'),
+    path('main/firstsemester/E/AE/AEnGM/AEnGAdd', views.AEnGAdd, name='AEnGAdd'),
+
+    path('main/firstsemester/E/AE/AEnPS', views.AEnPS, name='AEnPS'),
+    path('main/firstsemester/E/AE/AEnPS/AEnPAdd', views.AEnPAdd, name='AEnPAdd'),
+    path('main/firstsemester/E/AE/AEnPS/AEnPM/<int:ExNo>/<int:semestery>', views.AEnPM, name='AEnPM'),
+    path('main/firstsemester/E/AE/AEnPS/AEnP/<int:ExNo>/<int:semestery>', views.AEnP, name='AEnP'),
+
+    path('main/firstsemester/TH/ATH', views.ATh, name='ATh'),
+    path('main/firstsemester/TH/ATH/ATh1M/ATh1', views.ATh1, name='ATh1'),
+    path('main/firstsemester/TH/ATH/ATh1M/ATh1E/<int:number>', views.ATh1E, name='ATh1E'),
+    path('main/firstsemester/TH/ATH/Th1M', views.ATh1M, name='ATh1M'),
+    path('main/firstsemester/TH/ATH/ATh4M', views.ATh4M, name='ATh4M'),
+    path('main/firstsemester/TH/ATH/ATh4M/ATh4Add', views.ATh4Add,name='ATh4Add'),
+    path('main/firstsemester/TH/ATH/ATh4M/ATh4E/<int:number>', views.ATh4E,name='ATh4E'),
+    path('main/firstsemester/TH/ATH/ATh4M/ATh4/<int:number>', views.ATh4,name='ATh4'),
+
+    path('main/firstsemester/TH/ATH/AThGM', views.AThGM, name='AThGM'),
+    path('main/firstsemester/TH/ATH/AThGM/AThG', views.AThG, name='AThG'),
+    path('main/firstsemester/TH/ATH/AThGM/AThGE', views.AThGE, name='AThGE'),
+    path('main/firstsemester/TH/ATH/AThGM/AThGAdd', views.AThGAdd, name='AThGAdd'),
+
+    path('main/firstsemester/TH/ATH/AThPS', views.AThPS, name='AThPS'),
+    path('main/firstsemester/TH/ATH/AThPS/AThPAdd', views.AThPAdd, name='AThPAdd'),
+    path('main/firstsemester/TH/ATH/AThPS/AThPM/<int:ExNo>/<int:semestery>', views.AThPM, name='AThPM'),
+    path('main/firstsemester/TH/ATH/AThPS/AThP/<int:ExNo>/<int:semestery>', views.AThP, name='AThP'),
+
+    path('main/firstsemester/Statement', views.Statement, name='Statement'),
+    path('main/firstsemester/Statement/WStatement', views.WStatement, name='WStatement'),
+    path('main/firstsemester/Statement/WStatement/WPStatementM', views.WPStatementM, name='WPStatementM'),
+    path('main/firstsemester/Statement/WStatement/WPStatementM/WPStatement', views.WPStatement, name='WPStatement'),
+    path('main/firstsemester/Statement/WStatement/WPStatementM/WPStatement/<int:number>', views.WPStatementE, name='WPStatementE'),
+    path('main/firstsemester/Statement/WStatement/WTStatementM', views.WTStatementM, name='WTStatementM'),
+    path('main/firstsemester/Statement/WStatement/WTStatementM/WTStatement', views.WTStatement, name='WTStatement'),
+    path('main/firstsemester/Statement/WStatement/WTStatementM/WTStatement/<int:number>', views.WTStatementE, name='WTStatementE'),
+    path('main/firstsemester/Statement/WStatement/WGStatementM', views.WGStatementM, name="WGStatementM"),
+    path('main/firstsemester/Statement/WStatement/WGStatementM/WGStatement', views.WGStatement, name="WGStatement"),
+    path('main/firstsemester/Statement/WStatement/WGStatementM/WGStatementE', views.WGStatementE, name="WGStatementE"),
+    path('main/firstsemester/Statement/WStatement/WPPStatementM', views.WPPStatementM, name="WPPStatementM"),
+    path('main/firstsemester/Statement/WStatement/WPPStatementM/WPPStatement', views.WPPStatement, name="WPPStatement"),
+    path('main/firstsemester/Statement/WStatement/WPPStatementM/WPPStatementE/<int:pyear>/<int:number>', views.WPPStatementE,name="WPPStatementE"),
+
+    path('main/firstsemester/Statement/AStatement', views.AStatement, name='AStatement'),
 
 
 
@@ -85,3 +150,5 @@ urlpatterns = [
     path('main/firstsemester/APre_IslamicLiteratureE/<int:number>', views.APre_IslamicLiteratureE, name="APre_IslamicLiteratureE"),
 
 ]
+
+

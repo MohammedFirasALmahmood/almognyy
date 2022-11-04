@@ -2,20 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>اصول البحث اسئلة دورات</title>
+    <title>اسئلة دورات مؤتمت</title>
 </head>
 <body>
 <div style="text-align: center;">
-
+<center>
     <div align="center" style="width: 50%; height:50%">
         <form method="POST">
             {% csrf_token %}
 
             <fieldset dir="rtl">
 
-                <legend>سؤال و اربع خيارات</legend>
-                <p>
-                    <label>رقم الاختبار: <input type="number" name="ExNo" value="1"></label>
+                <legend>إضافة سؤال</legend>
                 <p>
                     <label>السؤال : <input name="question" type="text"/></label>
                 </p>
@@ -44,24 +42,18 @@
                     <label>ترتيب السؤال :<input name="number" type="number"></label>
                 </p>
 
-
-                <p>
-                    <label>السعر(لاول سؤال فقط وهو سعر الامتحان ) : <input name="price" type="number" value="0"/></label>
-                </p>
-
-                <label>نشر<input name="check" type="checkbox" value="checked"></label>
-
                 <input name="add" type="submit" value="تاكيد">
 
             </fieldset>
 
         </form>
     </div>
+    </center>
 </div>
 
 
 <div style="text-align: center;">
-
+<center>
     <div align="center" style="width: 50%; height:50%">
         <form method="POST">
             {% csrf_token %}
@@ -72,7 +64,7 @@
 
                 <!-- Label and input field -->
                 <p>
-                    <label>رقم الملف <input name="id" type="number"/></label>
+                    <label>ترتيب السؤال <input name="number" type="number"/></label>
                 </p>
 
 
@@ -82,16 +74,27 @@
             </fieldset>
         </form>
     </div>
+    </center>
 </div>
 
-<a href="{% url 'AResearchSeeds'%}">الرجوع</a>
-
+<a href="{% url 'AResearchSeedsPS'%}">الرجوع</a>
+<div align="right" dir="rtl" >
 {%for x in names%}
-<p align="right" dir="rtl">
-    {{x.lname}} ترتيب {{x.number}} <b>الرقم </b> ({{x.id}})
-</p>
 
+    <hr>
+    <pre style="font-size: 18px">
+    السؤال:   {{x.question}}
+    الجواب 1 :{{x.ans1}}
+    الجواب 2 :{{x.ans2}}
+    الجواب 3 :{{x.ans3}}
+    الجواب 4 :{{x.ans4}}
+    التعليل :{{x.why}}
+    رقم الجواب الصحيح :{{x.No_true}}
+    ترتيب السؤال : {{x.number}}
+</pre>
 {% endfor %}
-<a href="{% url 'AResearchSeeds'%}">الرجوع</a>
+    </div>
+
+<a href="{% url 'AResearchSeedsPS'%}">الرجوع</a>
 </body>
 </html>
