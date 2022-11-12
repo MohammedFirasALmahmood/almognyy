@@ -1,5 +1,5 @@
 from django.db import models
-
+from manager.models import Student
 
 # Create your models here.
 class Users(models.Model):
@@ -9,22 +9,21 @@ class Users(models.Model):
     def __str__(self):
         return self.username
 
-
 class FirstYearsUser(models.Model):
     username = models.CharField(null=False, max_length=50, unique=True)
     password = models.CharField(null=False, max_length=50)
 
     def __str__(self):
         return self.username
-
-
 class WGrammar(models.Model):
     lname = models.CharField(max_length=55, null=False)
     lfile = models.FileField(upload_to='GMA/WGrammar')
     lprice = models.IntegerField(default=0, null=True, blank=True)
     number = models.IntegerField(null=False, default='1')
     publish = models.BooleanField(null=True, default=True)
-
+class WGrammarConnent(models.Model):
+    user = models.ForeignKey(Student,on_delete=models.CASCADE)
+    WG = models.ForeignKey(WGrammar,on_delete=models.CASCADE)
 
 class WMorphology(models.Model):
     lname = models.CharField(max_length=55, null=False)
@@ -36,6 +35,9 @@ class WMorphology(models.Model):
     class Meta:
         ordering = ['number']
 
+class WMorphologyConnent(models.Model):
+    user = models.ForeignKey(Student,on_delete=models.CASCADE)
+    WG = models.ForeignKey(WMorphology,on_delete=models.CASCADE)
 
 class WGMAGlden(models.Model):
     lname = models.CharField(max_length=55, null=False)
@@ -715,5 +717,26 @@ class APPStatement(models.Model):
     class Meta:
         ordering = ['number']
 
+class  WHistory(models.Model):
+    lname = models.CharField(max_length=55, null=False)
+    lfile = models.FileField(upload_to='History/WHistory')
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    number = models.IntegerField(null=False, default='1')
+    publish = models.BooleanField(null=True, default=True)
 
+class PHistory(models.Model):
+    pyear = models.IntegerField(default=0, null=False)
+    lfile = models.FileField(upload_to='History/PHistory')
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    number = models.IntegerField(null=False, default='1')
+    publish = models.BooleanField(null=True, default=True)
+
+    class Meta:
+        ordering = ['pyear', 'number']
+
+class GHistory(models.Model):
+    lname = models.CharField(max_length=55, null=False)
+    lfile = models.FileField(upload_to='History/GHistory')
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    publish = models.BooleanField(null=True, default=True)
 

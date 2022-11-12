@@ -66,6 +66,15 @@ from .models import APStatement4M as APS4M
 from .models import ATStatement1 as ATS1
 from .models import ATStatement4 as ATS4
 from .models import ATStatement4M as ATS4M
+from .models import AGStatement as AGS
+from .models import AGStatementM as AGSM
+from .models import APPStatement as APPS
+from .models import APPStatementS as APPSS
+from .models import AGStatementM as AGSM
+from .models import APPStatement as APPS
+from .models import WHistory as WH
+from .models import GHistory as GH
+from .models import PHistory as PH
 
 
 # Create your views here.
@@ -114,6 +123,9 @@ def AGMA(request):
 # def
 class Form1(forms.Form):
     file = forms.FileField()
+
+def WGMA(request):
+    return render(request, 'firstyear/GMA/WGMA.html')
 
 
 def WGrammarM(request):
@@ -1972,8 +1984,6 @@ def Statement(requrst):
     return render(requrst,'firstyear/Statement/Statement.html')
 def WStatement(requrst):
     return render(requrst,'firstyear/Statement/WStatement.html')
-def AStatement(requrst):
-    return render(requrst,'firstyear/Statement/AStatement.html')
 
 def WTStatementM(request):
     list = WTS.objects.all()
@@ -2140,4 +2150,501 @@ def WPPStatement(request):
                 return redirect('WPPStatementM')
 
     return render(request, 'firstyear/Statement/WPPStatement.html', {'form': file})
+
+
+def AStatement(requrst):
+    return render(requrst,'firstyear/Statement/AStatement.html')
+
+
+def ATStatement(requrst):
+    return render(requrst,'firstyear/Statement/ATStatement.html')
+
+def APStatement(requrst):
+    return render(requrst,'firstyear/Statement/APStatement.html')
+
+
+def ATStatement1M(request):
+    list = ATS1.objects.all()
+
+    return render(request, 'firstyear/Statement/ATStatement1M.html', {'name': list})
+
+
+def ATStatement1(request):
+    list = ATS1.objects.all()
+    file = Form1(request.POST, request.FILES)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            if file.is_valid():
+                name = request.POST.get('name')
+                price = request.POST.get('price')
+                number = request.POST.get('number')
+                publish = bool(request.POST.get('check'))
+                Cdate = ATS1(lname=name, lfile=request.FILES['file'], lprice=price, number=number,
+                            publish=publish)
+                Cdate.save()
+                return redirect('ATStatement1M')
+
+    return render(request, 'firstyear/Statement/ATStatement1.html', {'names': list, 'form': file})
+
+
+def ATStatement1E(request, number):
+    list = ATS1.objects.get(number=number)
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        publish = bool(request.POST.get('check'))
+        number = request.POST.get("number")
+        list.number = number
+        list.lname = name
+        list.publish = publish
+        list.lprice = price
+        list.save()
+        return redirect('ATStatement1M')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('ATStatement1M')
+
+    return render(request, 'firstyear/Statement/ATStatement1E.html', {'name': list})
+
+
+def ATStatement4M(request):
+    list = ATS4M.objects.all()
+
+    return render(request, 'firstyear/Statement/ATStatement4M.html', {'names': list})
+
+
+def ATStatement4E(request, number):
+    list = ATS4M.objects.get(number=number)
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        number = request.POST.get('number')
+        publish = bool(request.POST.get('check'))
+        list.name = name
+        list.publish = publish
+        list.lprice = price
+        list.namber = number
+        list.save()
+        return redirect('ATStatement4M')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('ATStatement4M')
+
+    return render(request, 'firstyear/Statement/ATStatement4E.html', {'name': list})
+
+
+def ATStatement4Add(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        number = request.POST.get("number")
+        publish = bool(request.POST.get('check'))
+        lprice = request.POST.get("price")
+        Cdata = ATS4M(name=name, number=number, publish=publish, lprice=lprice)
+        Cdata.save()
+        return redirect('ATStatement4M')
+    return render(request, 'firstyear/Statement/ATStatement4Add.html')
+
+
+def ATStatement4(request, number):
+    db = ATS4M.objects.get(number=number)
+    list = ATS4.objects.filter(ExNo=db)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            question = request.POST.get('question')
+            ans1 = request.POST.get('ans1')
+            ans2 = request.POST.get('ans2')
+            ans3 = request.POST.get('ans3')
+            ans4 = request.POST.get('ans4')
+            why = request.POST.get('why')
+            No_true = request.POST.get('No')
+            number = request.POST.get('number')
+            Cdate = ATS4(question=question, ans1=ans1, ans2=ans2, ans3=ans3, ans4=ans4, why=why, No_true=No_true,
+                        ExNo=db,
+                        number=number)
+            Cdate.save()
+
+        elif 'delete' in request.POST:
+            number = request.POST.get("number")
+            member = ATS4.objects.get(number=number, ExNo=db)
+            instance = ATS4.objects.filter(number=number, ExNo=db)
+            instance.delete()
+            member.delete()
+
+    return render(request, 'firstyear/Statement/ATStatement4.html', {'names': list})
+
+
+
+
+def APStatement1M(request):
+    list = APS1.objects.all()
+
+    return render(request, 'firstyear/Statement/APStatement1M.html', {'name': list})
+
+
+def APStatement1(request):
+    list = APS1.objects.all()
+    file = Form1(request.POST, request.FILES)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            if file.is_valid():
+                name = request.POST.get('name')
+                price = request.POST.get('price')
+                number = request.POST.get('number')
+                publish = bool(request.POST.get('check'))
+                Cdate = APS1(lname=name, lfile=request.FILES['file'], lprice=price, number=number,
+                            publish=publish)
+                Cdate.save()
+                return redirect('APStatement1M')
+
+    return render(request, 'firstyear/Statement/APStatement1.html', {'names': list, 'form': file})
+
+
+def APStatement1E(request, number):
+    list = APS1.objects.get(number=number)
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        publish = bool(request.POST.get('check'))
+        number = request.POST.get("number")
+        list.number = number
+        list.lname = name
+        list.publish = publish
+        list.lprice = price
+        list.save()
+        return redirect('APStatement1M')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('APStatement1M')
+
+    return render(request, 'firstyear/Statement/APStatement1E.html', {'name': list})
+
+
+def APStatement4M(request):
+    list = APS4M.objects.all()
+
+    return render(request, 'firstyear/Statement/APStatement4M.html', {'names': list})
+
+
+def APStatement4E(request, number):
+    list = APS4M.objects.get(number=number)
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        number = request.POST.get('number')
+        publish = bool(request.POST.get('check'))
+        list.name = name
+        list.publish = publish
+        list.lprice = price
+        list.namber = number
+        list.save()
+        return redirect('APStatement4M')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('APStatement4M')
+
+    return render(request, 'firstyear/Statement/APStatement4E.html', {'name': list})
+
+
+def APStatement4Add(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        number = request.POST.get("number")
+        publish = bool(request.POST.get('check'))
+        lprice = request.POST.get("price")
+        Cdata = APS4M(name=name, number=number, publish=publish, lprice=lprice)
+        Cdata.save()
+        return redirect('APStatement4M')
+    return render(request, 'firstyear/Statement/APStatement4Add.html')
+
+
+def APStatement4(request, number):
+    db = APS4M.objects.get(number=number)
+    list = APS4.objects.filter(ExNo=db)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            question = request.POST.get('question')
+            ans1 = request.POST.get('ans1')
+            ans2 = request.POST.get('ans2')
+            ans3 = request.POST.get('ans3')
+            ans4 = request.POST.get('ans4')
+            why = request.POST.get('why')
+            No_true = request.POST.get('No')
+            number = request.POST.get('number')
+            Cdate = APS4(question=question, ans1=ans1, ans2=ans2, ans3=ans3, ans4=ans4, why=why, No_true=No_true,
+                        ExNo=db,
+                        number=number)
+            Cdate.save()
+
+        elif 'delete' in request.POST:
+            number = request.POST.get("number")
+            member = APS4.objects.get(number=number, ExNo=db)
+            instance = APS4.objects.filter(number=number, ExNo=db)
+            instance.delete()
+            member.delete()
+
+    return render(request, 'firstyear/Statement/APStatement4.html', {'names': list})
+
+
+def AGStatementM(request):
+    list = AGSM.objects.first()
+
+    return render(request, 'firstyear/Statement/AGStatementM.html', {'names': list})
+
+
+def AGStatementE(request):
+    list = AGSM.objects.first()
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        publish = bool(request.POST.get('check'))
+        list.name = name
+        list.lprice = price
+        list.publish = publish
+        list.save()
+        return redirect('AGStatementM')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('AGStatementM')
+
+    return render(request, 'firstyear/Statement/AGStatementE.html', {'names': list})
+
+
+def AGStatementAdd(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        publish = bool(request.POST.get('check'))
+        lprice = request.POST.get("price")
+        Cdata = AGSM(name=name, publish=publish, lprice=lprice)
+        Cdata.save()
+        return redirect('AGStatementM')
+    return render(request, 'firstyear/Statement/AGStatementAdd.html', {'names': list})
+
+
+def AGStatement(request):
+    db = AGSM.objects.first()
+    list = AGS.objects.all()
+    if request.method == "POST":
+        if 'add' in request.POST:
+            question = request.POST.get('question')
+            ans1 = request.POST.get('ans1')
+            ans2 = request.POST.get('ans2')
+            ans3 = request.POST.get('ans3')
+            ans4 = request.POST.get('ans4')
+            why = request.POST.get('why')
+            No_true = request.POST.get('No')
+            number = request.POST.get('number')
+
+            Cdate = AGS(question=question, ans1=ans1, ans2=ans2, ans3=ans3, ans4=ans4, why=why, No_true=No_true,
+                          number=number, ExNo=db)
+            Cdate.save()
+
+        elif 'delete' in request.POST:
+            number = request.POST.get("number")
+            member = AGS.objects.get(number=number)
+            instance = AGS.objects.get(number=number)
+            instance.delete()
+            member.delete()
+    return render(request, 'firstyear/Statement/AGStatement.html', {'names': list})
+
+
+def APPStatementS(request):
+    list = APPSS.objects.all()
+    return render(request, 'firstyear/Statement/APPStatementS.html', {'names': list})
+
+
+def APPStatementAdd(request):
+    if request.method == "POST":
+        if 'add' in request.POST:
+            ExNo = request.POST.get('ExNo')
+            semestery = request.POST.get('semestery')
+            lprice = request.POST.get('price')
+            publish = bool(request.POST.get('check'))
+            Cdate = APPSS(ExNo=ExNo, semestery=semestery, publish=publish, lprice=lprice)
+            Cdate.save()
+            return redirect('AGMAPriveosS')
+
+    return render(request, 'firstyear/Statement/APPStatementAdd.html', {'names': list})
+
+
+def APPStatementM(request, ExNo, semestery):
+    list = APPSS.objects.get(ExNo=ExNo, semestery=semestery)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            ExNo = request.POST.get('ExNo')
+            semestery = request.POST.get('semestery')
+            lprice = request.POST.get('price')
+            publish = bool(request.POST.get('check'))
+            list.ExNo = ExNo
+            list.semestery = semestery
+            list.lprice = lprice
+            list.publish = publish
+            list.save()
+        if 'delete' in request.POST:
+            list.delete()
+            return redirect('APPStatementS')
+
+    return render(request, 'firstyear/Statement/APPStatementM.html', {'names': list})
+
+
+def APPStatement(request, ExNo, semestery):
+    PreviosS = APPSS.objects.get(ExNo=ExNo, semestery=semestery)
+    list = APPS.objects.filter(PreviosS=PreviosS)
+    if request.method == "POST":
+        if 'add' in request.POST:
+
+            question = request.POST.get('question')
+            ans1 = request.POST.get('ans1')
+            ans2 = request.POST.get('ans2')
+            ans3 = request.POST.get('ans3')
+            ans4 = request.POST.get('ans4')
+            why = request.POST.get('why')
+            No_true = request.POST.get('No')
+            number = request.POST.get('number')
+            Cdate = APPS(PreviosS=PreviosS, question=question, ans1=ans1, ans2=ans2, ans3=ans3, ans4=ans4, why=why,
+                          No_true=No_true, number=number)
+            Cdate.save()
+
+        elif 'delete' in request.POST:
+            number = request.POST.get("number")
+            member = APPS.objects.get(number=number, PreviosS=PreviosS)
+            instance = APPS.objects.filter(number=number, PreviosS=PreviosS)
+            instance.delete()
+            member.delete()
+
+    return render(request, 'firstyear/Statement/APPStatement.html', {'names': list})
+
+
+
+def History(request):
+    return render(request, 'firstyear/History/History.html')
+
+
+def WHistoryM(request):
+    list = WH.objects.all()
+    return render(request, 'firstyear/History/WHistoryM.html', {'name': list})
+
+
+def WHistoryE(request, number):
+    list = WH.objects.get(number=number)
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        number = request.POST.get('number')
+        publish = bool(request.POST.get('check'))
+        list.name = name
+        list.publish = publish
+        list.lprice = price
+        list.namber = number
+        list.save()
+        return redirect('WHistoryM')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('WHistoryM')
+    return render(request, 'firstyear/History/WHistoryE.html', {'name': list})
+
+
+def WHistory (request):
+    list = WH.objects.all()
+    file = Form1(request.POST, request.FILES)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            if file.is_valid():
+                name = request.POST.get('name')
+                price = request.POST.get('price')
+                number = request.POST.get('number')
+                publish = bool(request.POST.get('check'))
+                Cdate = WH.objects.create(lname=name, lfile=request.FILES['file'], lprice=price, number=number,
+                                          publish=publish)
+                Cdate.save()
+                return redirect('WHistoryM')
+
+    return render(request, 'firstyear/History/WHistory.html', {'names': list, 'form': file})
+
+
+def PHistoryS(request):
+    list = PH.objects.all()
+    return render(request, 'firstyear/History/PHistoryS.html', {'name': list})
+
+
+def PHistoryE(request, pyear, number):
+    list = PH.objects.get(pyear=pyear, number=number)
+    print(list)
+    if 'add' in request.POST:
+        pyear = request.POST.get('pyear')
+        price = request.POST.get('price')
+        number = request.POST.get('number')
+        publish = bool(request.POST.get('check'))
+        list.pyear = pyear
+        list.publish = publish
+        list.lprice = price
+        list.namber = number
+        list.save()
+        return redirect('PHistoryS')
+
+    if 'delete' in request.POST:
+        list.delete()
+        return redirect('PHistoryS')
+    return render(request, 'firstyear/History/PHistoryE.html', {'name': list})
+
+
+def PHistory(request):
+    file = Form1(request.POST, request.FILES)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            if file.is_valid():
+                pyear = request.POST.get('pyear')
+                price = request.POST.get('price')
+                number = request.POST.get('number')
+                publish = bool(request.POST.get('check'))
+                Cdate = PH(pyear=pyear, lfile=request.FILES['file'], lprice=price, number=number, publish=publish)
+                Cdate.save()
+                return redirect('PHistoryS')
+
+    return render(request, 'firstyear/History/PHistory.html', {'form': file})
+
+
+def GHistoryM(request):
+    list = GH.objects.first()
+    return render(request, 'firstyear/History/GHistoryM.html', {'name': list})
+
+
+def GHistory(request):
+    list = GH.objects.first()
+    file = Form1(request.POST, request.FILES)
+    if request.method == "POST":
+        if 'add' in request.POST:
+            if file.is_valid():
+                name = request.POST.get('name')
+                price = request.POST.get('price')
+                publish = bool(request.POST.get('check'))
+                Cdate = GH(lname=name, lfile=request.FILES['file'], lprice=price, publish=publish)
+                Cdate.save()
+                return redirect('GHistoryM')
+    return render(request, 'firstyear/History/GHistory.html', {'names': list, 'form': file})
+
+
+def GHistoryE(request):
+    list = GH.objects.first()
+    if 'add' in request.POST:
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        publish = bool(request.POST.get('check'))
+        list.lname = name
+        list.publish = publish
+        list.lprice = price
+        list.save()
+        return redirect('GHistoryM')
+
+    if 'delete' in request.POST:
+        member = GH.objects.all()
+        member.delete()
+        return redirect('GHistoryM')
+
+    return render(request, 'firstyear/History/GHistoryE.html', {'name': list})
 

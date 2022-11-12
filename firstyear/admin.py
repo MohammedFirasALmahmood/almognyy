@@ -1,8 +1,10 @@
 from django.contrib import admin
 from .models import *
+from manager.models import Student
 # Register your models here.
 admin.site.register(Users)
 admin.site.register(WGrammar)
+admin.site.register(WGrammarConnent)
 admin.site.register(WMorphology)
 admin.site.register(WGMAGlden)
 admin.site.register(WGMAPriveos)

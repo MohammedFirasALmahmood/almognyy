@@ -137,9 +137,39 @@ urlpatterns = [
 
     path('main/firstsemester/Statement/AStatement', views.AStatement, name='AStatement'),
 
+    path('main/firstsemester/Statement/AStatement/ATStatement', views.ATStatement, name='ATStatement'),
+    path('main/firstsemester/Statement/AStatement/ATStatement/ATStatement1M/ATStatement1', views.ATStatement1, name='ATStatement1'),
+    path('main/firstsemester/Statement/AStatement/ATStatement/ATStatement1M/ATStatement1E/<int:number>', views.ATStatement1E,name='ATStatement1E'),
+    path('main/firstsemester/Statement/AStatement/ATStatement/ATStatement1M', views.ATStatement1M, name='ATStatement1M'),
+
+    path('main/firstsemester/Statement/AStatement/ATStatement/ATStatement4M', views.ATStatement4M, name='ATStatement4M'),
+    path('main/firstsemester/Statement/AStatement/ATStatement/ATStatement4M/ATStatement4Add', views.ATStatement4Add, name='ATStatement4Add'),
+    path('main/firstsemester/Statement/AStatement/ATStatement/ATStatement4M/ATStatement4E/<int:number>', views.ATStatement4E,name='ATStatement4E'),
+    path('main/firstsemester/Statement/AStatement/ATStatement/ATStatement4M/ATStatement4/<int:number>', views.ATStatement4, name='ATStatement4'),
+
+    path('main/firstsemester/Statement/AStatement/APStatement', views.APStatement, name='APStatement'),
+
+    path('main/firstsemester/Statement/AStatement/APStatement/APStatement1M/APStatement1', views.APStatement1, name='APStatement1'),
+    path('main/firstsemester/Statement/AStatement/APStatement/APStatement1M/APStatement1E/<int:number>', views.APStatement1E,name='APStatement1E'),
+
+    path('main/firstsemester/Statement/AStatement/APStatement/APStatement1M', views.APStatement1M, name='APStatement1M'),
+
+    path('main/firstsemester/Statement/AStatement/APStatement/APStatement4M', views.APStatement4M, name='APStatement4M'),
+    path('main/firstsemester/Statement/AStatement/APStatement/APStatement4M/APStatement4Add', views.APStatement4Add,name='APStatement4Add'),
+    path('main/firstsemester/Statement/AStatement/APStatement/APStatement4M/APStatement4E/<int:number>', views.APStatement4E,name='APStatement4E'),
+    path('main/firstsemester/Statement/AStatement/APStatement/APStatement4M/APStatement4/<int:number>', views.APStatement4,name='APStatement4'),
 
 
+    path('main/firstsemester/Statement/AStatement/AGStatementM', views.AGStatementM, name='AGStatementM'),
+    path('main/firstsemester/Statement/AStatement/AGStatementM/AGStatement', views.AGStatement, name='AGStatement'),
+    path('main/firstsemester/Statement/AStatement/AGStatementM/AGStatementAdd', views.AGStatementAdd, name='AGStatementAdd'),
+    path('main/firstsemester/Statement/AStatement/AGStatementM/AGStatementE', views.AGStatementE, name='AGStatementE'),
 
+
+    path('main/firstsemester/Statement/AStatement/APPStatementS', views.APPStatementS, name='APPStatementS'),
+    path('main/firstsemester/Statement/AStatement/APPStatementS/APPStatementAdd', views.APPStatementAdd, name='APPStatementAdd'),
+    path('main/firstsemester/Statement/AStatement/APPStatementS/APPStatementM/<int:ExNo>/<int:semestery>', views.APPStatementM,name='APPStatementM'),
+    path('main/firstsemester/Statement/AStatement/APPStatementS/APPStatement/<int:ExNo>/<int:semestery>', views.APPStatement,name='APPStatement'),
 
     path('main/firstsemester/Pre_IslamicLiterature', views.Pre_IslamicLiterature, name='Pre_IslamicLiterature'),
     path('main/firstsemester/HPre_IslamicLiteratureM', views.HPre_IslamicLiteratureM, name='HPre_IslamicLiteratureM'),
@@ -148,6 +178,18 @@ urlpatterns = [
     path('main/firstsemester/APre_IslamicLiteratureM', views.APre_IslamicLiteratureM, name='APre_IslamicLiteratureM'),
     path('main/firstsemester/APre_IslamicLiterature', views.APre_IslamicLiterature, name='APre_IslamicLiterature'),
     path('main/firstsemester/APre_IslamicLiteratureE/<int:number>', views.APre_IslamicLiteratureE, name="APre_IslamicLiteratureE"),
+
+
+    path('main/firstsemester/History', views.History, name='History'),
+    path('main/firstsemester/History/WHistoryM', views.WHistoryM, name='WHistoryM'),
+    path('main/firstsemester/History/WHistoryM/WHistory', views.WHistory, name='WHistory'),
+    path('main/firstsemester/History/WHistoryM/WHistoryE/<int:number>', views.WHistoryE, name='WHistoryE'),
+    path('main/firstsemester/History/GHistoryM', views.WGStatementM, name="GHistoryM"),
+    path('main/firstsemester/History/GHistoryM/GHistory', views.GHistory, name="GHistory"),
+    path('main/firstsemester/History/GHistoryM/GHistoryE', views.GHistoryE, name="GHistoryE"),
+    path('main/firstsemester/History/PHistoryS', views.PHistoryS, name="PHistoryS"),
+    path('main/firstsemester/History/PHistoryS/PHistory', views.PHistory, name="PHistory"),
+    path('main/firstsemester/History/PHistoryS/PHistoryE/<int:pyear>/<int:number>', views.PHistoryE,name="PHistoryE"),
 
 ]
 

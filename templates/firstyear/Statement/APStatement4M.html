@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> سؤال و أربع خيارات</title>
+</head>
+<body>
+<div style="text-align: center;" dir="rtl">
+        <br><a href="{% url 'APStatement4Add'%}" style="font-size: 18px;"> إضافة مجموعة اسئلة </a><br><br>
+    {% for x in names %}<pre style="font-size: 18px">{{x.name}}  <a href="{% url 'APStatement4E' number=x.number%}">تعديل\حذف</a>      <a href="{% url 'APStatement4' number=x.number%}"> اضافة\حذف اسئلة</a></pre>{%endfor%}
+</div>
+<a href="{% url 'APStatement'%}">الرجوع</a>
+</body>
+</html>

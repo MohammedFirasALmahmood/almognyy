@@ -15,4 +15,4 @@ class Student(models.Model):
     student_phone=models.CharField(max_length=500,unique=True,null=False)
     student_balance=models.IntegerField(default=0)
     activation_code=models.IntegerField(default=0)
-
+    device_id=models.CharField(max_length=500,unique=True,null=False,default="0")

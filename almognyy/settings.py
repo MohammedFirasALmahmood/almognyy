@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'firstyear.apps.FirstyearConfig',
+    'secoundyear.apps.SecoundyearConfig',
     'manager.apps.ManagerConfig',
     'api.apps.ApiConfig',
 ]

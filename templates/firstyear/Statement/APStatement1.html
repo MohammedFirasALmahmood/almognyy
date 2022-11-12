@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title> تحريري</title>
+    <title> سؤال و جواب</title>
 </head>
 <body>
 
 <div style="text-align: center;">
-<center>
+    <center>
     <div align="center" style="width: 50%; height:50%">
         <form action="" enctype="multipart/form-data" method="POST">
             {% csrf_token %}
@@ -18,7 +18,7 @@
 
                 <!-- Label and input field -->
                 <p>
-                    <label>عنوان المحاضرة : <input name="name"/></label>
+                    <label>عنوان الملف : <input name="name"/></label>
                 </p>
 
                 <p>
@@ -26,27 +26,24 @@
                 </p>
 
                 <p>
-                    <label>سعر المحاضرة : <input name="price" type="number"></label>
+                    <label>سعر الملف : <input name="price" type="number"></label>
                 </p>
-
                 <p>
-                    <label>ترتيب المحاضرة : <input name="number" type="number"></label>
+                    <label>ترتيب الملف : <input name="number" type="number"></label>
                 </p>
-                <label>نشر<input name="check" type="checkbox" value="checked"></label>
 
+
+                <label>نشر<input name="check" type="checkbox" value="checked"></label>
 
                 <input name="add" type="submit" value="تاكيد">
 
             </fieldset>
         </form>
     </div>
-    </center>
+</center>
 </div>
 
-
-<a href="{% url 'WPStatementM'%}">الرجوع</a>
-
-
+<a href="{% url 'APStatement1M'%}">الرجوع</a>
 
 </body>
 </html>
