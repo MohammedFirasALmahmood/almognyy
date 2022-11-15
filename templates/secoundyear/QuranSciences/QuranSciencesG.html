@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>نحو و صرف 1 اسئلة ذهبية</title>
+</head>
+<body>
+<div style="text-align: center;">
+<center>
+
+    <div align="center" style="width: 50%; height:50%">
+        <form action="" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+
+            <fieldset dir="rtl">
+
+                <legend>إضافة ملف</legend>
+
+                <!-- Label and input field -->
+                <p>
+                    <label>عنوان الملف : <input name="name"/></label>
+                </p>
+
+                <p>
+                    {{form.as_p}}
+                </p>
+
+                <p>
+                    <label>سعر الملف : <input name="price" type="number"></label>
+                </p>
+
+                <label>نشر<input name="check" type="checkbox" value="checked"></label>
+
+                <input name="add" type="submit" value="تاكيد">
+
+            </fieldset>
+        </form>
+    </div>
+</center>
+</div>
+<a href="{% url 'QuranSciencesGM'%}">الرجوع</a>
+
+</body>
+</html>

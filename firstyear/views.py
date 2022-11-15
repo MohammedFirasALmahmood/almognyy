@@ -13,8 +13,8 @@ from .models import AGMAGolden as AGMAG
 from .models import AGMAGoldenM as AGMAGM
 from .models import AGMAPriveos as AGMAP
 from .models import AGMAPriveosS as AGMAPS
-from .models import AGrammar4M as AG4M
 from .models import AGrammer1 as AG1
+from .models import AGrammar4M as AG4M
 from .models import AGrammer4 as AG4
 from .models import AMorphology1 as AM1
 from .models import AMorphology4 as AM4
@@ -70,8 +70,6 @@ from .models import AGStatement as AGS
 from .models import AGStatementM as AGSM
 from .models import APPStatement as APPS
 from .models import APPStatementS as APPSS
-from .models import AGStatementM as AGSM
-from .models import APPStatement as APPS
 from .models import WHistory as WH
 from .models import GHistory as GH
 from .models import PHistory as PH

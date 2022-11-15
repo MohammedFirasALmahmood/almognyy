@@ -1,5 +1,7 @@
 from django.db import models
+
 from manager.models import Student
+
 
 # Create your models here.
 
@@ -10,9 +12,11 @@ class AGrammer31(models.Model):
     number = models.IntegerField(default=1, null=False)
     publish = models.BooleanField(null=True, default=True)
 
+
 class AGrammer31Connent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(AGrammer31,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(AGrammer31, on_delete=models.CASCADE)
+
 
 class AGrammar34M(models.Model):
     name = models.CharField(max_length=55, null=False)
@@ -20,9 +24,11 @@ class AGrammar34M(models.Model):
     publish = models.BooleanField(null=True, default=True)
     lprice = models.IntegerField(default=1, null=True, blank=True)
 
+
 class AGrammar34MConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(AGrammar34M,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(AGrammar34M, on_delete=models.CASCADE)
+
 
 class AGrammer34(models.Model):
     ExNo = models.ForeignKey(AGrammar34M, on_delete=models.CASCADE, default=1)
@@ -46,9 +52,11 @@ class AMorphology31(models.Model):
     publish = models.BooleanField(null=True, default=True)
     number = models.IntegerField(null=False, default='1')
 
+
 class AMorphology31Connent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(AMorphology31,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(AMorphology31, on_delete=models.CASCADE)
+
 
 class AMorphology34M(models.Model):
     name = models.CharField(max_length=55, null=False)
@@ -58,10 +66,11 @@ class AMorphology34M(models.Model):
 
     class Meta:
         ordering = ['number']
-class AMorphology34MConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(AMorphology34M,on_delete=models.CASCADE)
 
+
+class AMorphology34MConnent(models.Model):
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(AMorphology34M, on_delete=models.CASCADE)
 
 
 class AMorphology34(models.Model):
@@ -80,10 +89,9 @@ class AMorphology34(models.Model):
 
 
 class AGMA3GoldenM(models.Model):
-    name = models.TextField(max_length=100,null=False,default="0")
+    name = models.TextField(max_length=100, null=False, default="0")
     publish = models.BooleanField()
     lprice = models.IntegerField(default=1)
-
 
 
 class AGMA3Golden(models.Model):
@@ -110,9 +118,10 @@ class AGMA3PriveosS(models.Model):
     class Meta:
         ordering = ['ExNo', 'semestery']
 
+
 class AGMA3PriveosSConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(AGMA3PriveosS,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(AGMA3PriveosS, on_delete=models.CASCADE)
 
 
 class AGMA3Priveos(models.Model):
@@ -129,6 +138,9 @@ class AGMA3Priveos(models.Model):
     class Meta:
         ordering = ['number']
 
+
+# ------------------------------------QuranSciences-------------------------------------
+
 class AQuranSciences(models.Model):
     lname = models.CharField(max_length=55, null=False)
     lfile = models.FileField(upload_to='QuranSciences/AQuranSciences')
@@ -136,9 +148,10 @@ class AQuranSciences(models.Model):
     number = models.IntegerField(default=1, null=False)
     publish = models.BooleanField(null=True, default=True)
 
+
 class AQuranSciencesConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(AQuranSciences,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(AQuranSciences, on_delete=models.CASCADE)
 
 
 class HQuranSciences(models.Model):
@@ -148,9 +161,10 @@ class HQuranSciences(models.Model):
     number = models.IntegerField(default=1, null=False)
     publish = models.BooleanField(null=True, default=True)
 
+
 class HQuranSciencesConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(HQuranSciences,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(HQuranSciences, on_delete=models.CASCADE)
 
 
 class Maryam(models.Model):
@@ -160,9 +174,10 @@ class Maryam(models.Model):
     number = models.IntegerField(default=1, null=False)
     publish = models.BooleanField(null=True, default=True)
 
+
 class MaryamConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(Maryam,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(Maryam, on_delete=models.CASCADE)
 
 
 class AMM(models.Model):
@@ -172,60 +187,31 @@ class AMM(models.Model):
     number = models.IntegerField(default=1, null=False)
     publish = models.BooleanField(null=True, default=True)
 
+
 class AMMConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(AMM,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(AMM, on_delete=models.CASCADE)
 
 
-class GQuranSciencesM(models.Model):
-    name = models.TextField(max_length=100,null=False,default="0")
-    publish = models.BooleanField()
-    lprice = models.IntegerField(default=1)
-
-
-
-class GQuranSciences(models.Model):
-    ExNo = models.ForeignKey(GQuranSciencesM, on_delete=models.CASCADE, default=1)
-    question = models.TextField(null=False)
-    ans1 = models.TextField(null=False)
-    ans2 = models.TextField(null=False)
-    ans3 = models.TextField(null=False)
-    ans4 = models.TextField(null=False)
-    why = models.TextField(default='')
-    No_true = models.IntegerField(default=1, null=False)
-    number = models.IntegerField(default=1, null=False)
-
-    class Meta:
-        ordering = ['number']
-
-
-class PQuranSciencesS(models.Model):
-    ExNo = models.IntegerField(default=1, null=False, blank=False)
-    semestery = models.IntegerField(default=1, null=False, blank=False)
+class QuranSciencesG(models.Model):
+    lname = models.CharField(max_length=55, null=False)
+    lfile = models.FileField(upload_to='QuranSciences/QuranSciencesG')
     lprice = models.IntegerField(default=0, null=True, blank=True)
     publish = models.BooleanField(null=True, default=True)
 
-    class Meta:
-        ordering = ['ExNo', 'semestery']
+class QuranSciencesP(models.Model):
+    pyear = models.IntegerField(default=0, null=False)
+    lfile = models.FileField(upload_to='QuranSciences/QuranSciencesP')
+    lprice = models.IntegerField(default=0, null=True, blank=True)
+    number = models.IntegerField(null=False, default='1')
+    publish = models.BooleanField(null=True, default=True)
 
-class PQuranSciencesSConnent(models.Model):
+    class Meta:
+        ordering = ['pyear', 'number']
+
+class QuranSciencesPConnent(models.Model):
     user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(PQuranSciencesS,on_delete=models.CASCADE)
-
-
-class PQuranSciences(models.Model):
-    PreviosS = models.ForeignKey(PQuranSciencesS, on_delete=models.CASCADE, default=1)
-    question = models.TextField(null=False)
-    ans1 = models.TextField(null=False)
-    ans2 = models.TextField(null=False)
-    ans3 = models.TextField(null=False)
-    ans4 = models.TextField(null=False)
-    why = models.TextField(default='')
-    No_true = models.IntegerField(default=1, null=False)
-    number = models.IntegerField(default=1, null=False)
-
-    class Meta:
-        ordering = ['number']
+    lecture = models.ForeignKey(QuranSciencesP,on_delete=models.CASCADE)
 
 class AIslamicLiterature(models.Model):
     lname = models.CharField(max_length=55, null=False)
@@ -234,9 +220,10 @@ class AIslamicLiterature(models.Model):
     number = models.IntegerField(default=1, null=False)
     publish = models.BooleanField(null=True, default=True)
 
+
 class AIslamicLiteratureConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(AIslamicLiterature,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(AIslamicLiterature, on_delete=models.CASCADE)
 
 
 class HIslamicLiterature(models.Model):
@@ -246,9 +233,10 @@ class HIslamicLiterature(models.Model):
     number = models.IntegerField(default=1, null=False)
     publish = models.BooleanField(null=True, default=True)
 
+
 class HIslamicLiteratureConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(HIslamicLiterature,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(HIslamicLiterature, on_delete=models.CASCADE)
 
 
 class GIslamicLiterature(models.Model):
@@ -268,22 +256,25 @@ class PIslamicLiterature(models.Model):
     class Meta:
         ordering = ['pyear', 'number']
 
+
 class PIslamicLiteratureConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(PIslamicLiterature,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(PIslamicLiterature, on_delete=models.CASCADE)
+
+
 # ------------------------------------Semantics-------------------------------------
 
-class  WTSemantics(models.Model):
+class WTSemantics(models.Model):
     lname = models.CharField(max_length=55, null=False)
     lfile = models.FileField(upload_to='Semantics/WTSemantics')
     lprice = models.IntegerField(default=0, null=True, blank=True)
     number = models.IntegerField(null=False, default='1')
     publish = models.BooleanField(null=True, default=True)
 
-class WTSemanticsConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(WTSemantics,on_delete=models.CASCADE)
 
+class WTSemanticsConnent(models.Model):
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(WTSemantics, on_delete=models.CASCADE)
 
 
 class WPSemantics(models.Model):
@@ -293,9 +284,10 @@ class WPSemantics(models.Model):
     number = models.IntegerField(null=False, default='1')
     publish = models.BooleanField(null=True, default=True)
 
+
 class WPSemanticsConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(WPSemantics,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(WPSemantics, on_delete=models.CASCADE)
 
 
 class WGSemantics(models.Model):
@@ -315,9 +307,10 @@ class WPPSemantics(models.Model):
     class Meta:
         ordering = ['pyear', 'number']
 
+
 class WPPSemanticsConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(WPPSemantics,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(WPPSemantics, on_delete=models.CASCADE)
 
 
 class ATSemantics1(models.Model):
@@ -327,9 +320,11 @@ class ATSemantics1(models.Model):
     publish = models.BooleanField(null=True, default=True)
     number = models.IntegerField(null=False, default='1')
 
+
 class ATSemantics1Connent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(ATSemantics1,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(ATSemantics1, on_delete=models.CASCADE)
+
 
 class ATSemantics4M(models.Model):
     name = models.CharField(max_length=55, null=False)
@@ -342,8 +337,9 @@ class ATSemantics4M(models.Model):
 
 
 class ATSemantics4MConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(ATSemantics4M,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(ATSemantics4M, on_delete=models.CASCADE)
+
 
 class ATSemantics4(models.Model):
     ExNo = models.ForeignKey(ATSemantics4M, on_delete=models.CASCADE, default=1)
@@ -359,6 +355,7 @@ class ATSemantics4(models.Model):
     class Meta:
         ordering = ['number']
 
+
 class APSemantics1(models.Model):
     lname = models.CharField(max_length=55, null=False)
     lfile = models.FileField(upload_to='Semantics/APSemantics1')
@@ -366,10 +363,10 @@ class APSemantics1(models.Model):
     publish = models.BooleanField(null=True, default=True)
     number = models.IntegerField(null=False, default='1')
 
-class APSemantics1Connent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(APSemantics1,on_delete=models.CASCADE)
 
+class APSemantics1Connent(models.Model):
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(APSemantics1, on_delete=models.CASCADE)
 
 
 class APSemantics4M(models.Model):
@@ -381,9 +378,10 @@ class APSemantics4M(models.Model):
     class Meta:
         ordering = ['number']
 
+
 class APSemantics4MConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(APSemantics4M,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(APSemantics4M, on_delete=models.CASCADE)
 
 
 class APSemantics4(models.Model):
@@ -400,10 +398,12 @@ class APSemantics4(models.Model):
     class Meta:
         ordering = ['number']
 
+
 class AGSemanticsM(models.Model):
     name = models.TextField(max_length=100, null=False, default="0")
     publish = models.BooleanField()
     lprice = models.IntegerField(default=1)
+
 
 class AGSemantics(models.Model):
     ExNo = models.ForeignKey(AGSemanticsM, on_delete=models.CASCADE, default=1)
@@ -429,9 +429,10 @@ class APPSemanticsS(models.Model):
     class Meta:
         ordering = ['ExNo', 'semestery']
 
+
 class APPSemanticsSConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(APPSemanticsS,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(APPSemanticsS, on_delete=models.CASCADE)
 
 
 class APPSemantics(models.Model):
@@ -448,6 +449,7 @@ class APPSemantics(models.Model):
     class Meta:
         ordering = ['number']
 
+
 # -----------------------EN3-----------------------------------------------------
 class AE31(models.Model):
     lname = models.CharField(max_length=55, null=False)
@@ -456,9 +458,11 @@ class AE31(models.Model):
     publish = models.BooleanField(null=True, default=True)
     number = models.IntegerField(null=False, default='1')
 
+
 class AE31Connent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(AE31,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(AE31, on_delete=models.CASCADE)
+
 
 class AE34M(models.Model):
     name = models.CharField(max_length=55, null=False)
@@ -471,8 +475,9 @@ class AE34M(models.Model):
 
 
 class AE34MConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(AE34M,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(AE34M, on_delete=models.CASCADE)
+
 
 class AE34(models.Model):
     ExNo = models.ForeignKey(AE34M, on_delete=models.CASCADE, default=1)
@@ -487,6 +492,8 @@ class AE34(models.Model):
 
     class Meta:
         ordering = ['number']
+
+
 class AE3PS(models.Model):
     ExNo = models.IntegerField(default=1, null=False, blank=False)
     semestery = models.IntegerField(default=1, null=False, blank=False)
@@ -496,9 +503,11 @@ class AE3PS(models.Model):
     class Meta:
         ordering = ['ExNo', 'semestery']
 
+
 class AE3PSConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(AE3PS,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(AE3PS, on_delete=models.CASCADE)
+
 
 class AE3P(models.Model):
     PreviosS = models.ForeignKey(AE3PS, on_delete=models.CASCADE, default=1)
@@ -514,6 +523,7 @@ class AE3P(models.Model):
     class Meta:
         ordering = ['number']
 
+
 # ---------------------------Persian--------------------------------------------
 
 class Persian(models.Model):
@@ -523,12 +533,13 @@ class Persian(models.Model):
     publish = models.BooleanField(null=True, default=True)
     number = models.IntegerField(null=False, default='1')
 
+
 class PersianConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(Persian,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(Persian, on_delete=models.CASCADE)
 
 
-#---------------History2--------------------------------------------------------
+# ---------------History2--------------------------------------------------------
 class History21(models.Model):
     lname = models.CharField(max_length=55, null=False)
     lfile = models.FileField(upload_to='Statement/APStatement1')
@@ -536,10 +547,10 @@ class History21(models.Model):
     publish = models.BooleanField(null=True, default=True)
     number = models.IntegerField(null=False, default='1')
 
-class History21Connent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(History21,on_delete=models.CASCADE)
 
+class History21Connent(models.Model):
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(History21, on_delete=models.CASCADE)
 
 
 class History24M(models.Model):
@@ -551,9 +562,10 @@ class History24M(models.Model):
     class Meta:
         ordering = ['number']
 
+
 class History24MConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(History24M,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(History24M, on_delete=models.CASCADE)
 
 
 class History24(models.Model):
@@ -570,10 +582,12 @@ class History24(models.Model):
     class Meta:
         ordering = ['number']
 
+
 class GHistory2M(models.Model):
     name = models.TextField(max_length=100, null=False, default="0")
     publish = models.BooleanField()
     lprice = models.IntegerField(default=1)
+
 
 class GHistory2(models.Model):
     ExNo = models.ForeignKey(GHistory2M, on_delete=models.CASCADE, default=1)
@@ -599,9 +613,10 @@ class PHistory2S(models.Model):
     class Meta:
         ordering = ['ExNo', 'semestery']
 
+
 class PHistory2SConnent(models.Model):
-    user = models.ForeignKey(Student,on_delete=models.CASCADE)
-    lecture = models.ForeignKey(PHistory2S,on_delete=models.CASCADE)
+    user = models.ForeignKey(Student, on_delete=models.CASCADE)
+    lecture = models.ForeignKey(PHistory2S, on_delete=models.CASCADE)
 
 
 class PHistory2(models.Model):
@@ -617,4 +632,3 @@ class PHistory2(models.Model):
 
     class Meta:
         ordering = ['number']
-

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ملفات سؤال و جواب</title>
+</head>
+<body>
+<div style="text-align: center;" dir="rtl">
+     <br><a href="{% url 'HIslamicLiterature'%}" style="font-size: 18px;"> إضافة ملف </a><br><br>
+    {% for x in name%}
+    <pre style="font-size: 18px">{{x.lname}}    <a href="{% url 'HIslamicLiteratureE' number=x.number%}">تعديل\حذف</a>    </pre>
+    {%endfor%}
+
+
+
+
+
+</div>
+<a href="{% url 'IslamicLiterature'%}">الرجوع</a>
+
+</body>
+
+</html>

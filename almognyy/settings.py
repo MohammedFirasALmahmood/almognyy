@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'firstyear.apps.FirstyearConfig',
     'secoundyear.apps.SecoundyearConfig',
+    'thirdyear.apps.ThirdyearConfig',
     'manager.apps.ManagerConfig',
     'api.apps.ApiConfig',
 ]

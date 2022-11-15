@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>سؤال و جواب</title>
+</head>
+<body>
+
+</body><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ملفات سؤال و جواب</title>
+</head>
+<body>
+<div style="text-align: center;" dir="rtl">
+     <br><a href="{% url 'AHistory21'%}" style="font-size: 18px;"> إضافة ملف </a><br><br>
+    {% for x in name%}
+    <pre style="font-size: 18px">{{x.lname}}    <a href="{% url 'AHistory21E' number=x.number%}">تعديل\حذف</a>    </pre>
+    {%endfor%}
+
+
+
+
+
+</div>
+<a href="{% url 'AHistory2'%}">الرجوع</a>
+
+</body>
+
+</html>
+</html>

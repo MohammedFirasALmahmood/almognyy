@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>تعديل و حذف</title>
+</head>
+<body>
+<div style="text-align: center; align-content: center">
+    <center>
+
+        <div align="center" style="width: 50%; height:50%">
+            <form method="POST">
+                {% csrf_token %}
+
+                <fieldset dir="rtl">
+
+                    <legend>تعديل دورة</legend>
+                    <p>
+                        <label>السنة : <input type="number" name="ExNo" value="{{name.ExNo}}"></label>
+                    </p>
+                    <p>
+                        <label>الفصل (بالأرقام) : <input name="semestery" type="text" value={{name.semestery}}></label>
+                    </p>
+
+
+                    <p>
+                        <label>السعر : <input name="price" type="number" value={{name.lprice}}></label>
+                    </p>
+                    {% if name.publish%}
+                    <label>نشر<input name="check" type="checkbox" checked></label>
+                    {% else%}
+                    <label>نشر<input name="check" type="checkbox"></label>
+                    {% endif %}
+
+
+                    <input name="add" type="submit" value="تاكيد">
+
+                </fieldset>
+
+            </form>
+        </div>
+    </center>
+</div>
+
+</center>
+<div style="text-align: center;">
+    <center>
+        <div align="center" style="width: 50%; height:50%">
+            <form method="POST">
+                {% csrf_token %}
+
+                <fieldset dir="rtl">
+
+                    <legend>حذف الدورة</legend>
+
+
+                    <pre style="color: red ;font-size: 18px">   <label><input name="delete" type="submit" value="تاكيد">   حذف الدورة  </label>   </pre>
+
+
+                </fieldset>
+            </form>
+        </div>
+    </center>
+</div>
+<a href="{% url 'AGMA3PriveosS'%}">الرجوع</a>
+
+{%for x in names%}
+<p align="right" dir="rtl">
+    {{x.lname}} ترتيب {{x.number}} <b>الرقم </b> ({{x.id}})
+</p>
+
+{% endfor %}
+<a href="{% url 'AGMA3PriveosS'%}">الرجوع</a>
+</body>
+</html>

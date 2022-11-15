@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div style="text-align: center;">
+<center>
+    <div align="center" style="width: 50%; height:50%">
+        <form action="" enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+
+            <fieldset dir="rtl">
+
+                <legend>تعديل المجموعة</legend>
+
+                <!-- Label and input field -->
+                <p>
+                    <label>عنوان المجموعة : <input name="name" value="{{name.name}}"></label>
+                </p>
+
+                <p>
+                    <label>سعر المجموعة : <input name="price" type="number" value="{{name.lprice}}"></label>
+                </p>
+
+                {% if name.publish%}
+                    <label>نشر<input name="check" type="checkbox" checked></label>
+                    {% else%}
+                    <label>نشر<input name="check" type="checkbox"></label>
+                    {% endif %}
+
+                <input name="add" type="submit" value="تاكيد">
+
+            </fieldset>
+        </form>
+    </div>
+    </center>
+</div>
+
+
+<div style="text-align: center;">
+<center>
+    <div align="center" style="width: 50%; height:50%">
+        <form method="POST">
+                {% csrf_token %}
+
+                <fieldset dir="rtl">
+
+                    <legend>حذف المجموعة</legend>
+
+
+                    <pre style="color: red ;font-size: 18px">   <label><input name="delete" type="submit" value="تاكيد">   حذف المجموعة  </label>   </pre>
+
+
+                </fieldset>
+            </form>
+    </div>
+    </center>
+</div>
+
+<a href="{% url 'AGMA3GoldenM'%}">الرجوع</a>
+
+
+
+</body>
+</html>
