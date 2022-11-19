@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'firstyear.apps.FirstyearConfig',
     'secoundyear.apps.SecoundyearConfig',
     'thirdyear.apps.ThirdyearConfig',
+    'forthyear.apps.ForthyearConfig',
     'manager.apps.ManagerConfig',
     'api.apps.ApiConfig',
 ]

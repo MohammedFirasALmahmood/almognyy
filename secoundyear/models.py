@@ -542,7 +542,7 @@ class PersianConnent(models.Model):
 # ---------------History2--------------------------------------------------------
 class History21(models.Model):
     lname = models.CharField(max_length=55, null=False)
-    lfile = models.FileField(upload_to='Statement/APStatement1')
+    lfile = models.FileField(upload_to='History2/History21')
     lprice = models.IntegerField(default=0, null=True, blank=True)
     publish = models.BooleanField(null=True, default=True)
     number = models.IntegerField(null=False, default='1')

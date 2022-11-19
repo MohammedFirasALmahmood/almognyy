@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>نحو 1 سؤال و أربع خيارات</title>
+</head>
+<body>
+<div style="text-align: center;" dir="rtl">
+        <br><a href="{% url 'AGrammar54Add'%}" style="font-size: 18px;"> إضافة مجموعة اسئلة </a><br><br>
+    {% for x in names %}<pre style="font-size: 18px">{{x.name}}  <a href="{% url 'AGrammar54E' number=x.number%}">تعديل\حذف</a>      <a href="{% url 'AGrammar54' number=x.number%}"> اضافة\حذف اسئلة</a></pre>{%endfor%}
+</div>
+<a href="{% url 'AGMA5'%}">الرجوع</a>
+</body>
+</html>

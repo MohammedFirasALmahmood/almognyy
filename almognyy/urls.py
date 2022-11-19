@@ -22,6 +22,8 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('firstyear/', include('firstyear.urls')),
                   path('secoundyear/', include('secoundyear.urls')),
+                  path('thirdyear/', include('thirdyear.urls')),
+                  path('forthyear/', include('forthyear.urls')),
                   path('manager/', include('manager.urls')),
                   path('api/', include('api.urls')),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -22,7 +22,6 @@ from .models import AIslamicLiterature as AI
 from .models import HIslamicLiterature as HI
 from .models import GIslamicLiterature as GI
 from .models import PIslamicLiterature as PI
-from .models import PIslamicLiterature as PI
 from .models import WTSemantics as WTS
 from .models import WPSemantics as WPS
 from .models import WGSemantics as WGS

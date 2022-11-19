@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>اضافة مجموعة اسئلة ذهبية</title>
+</head>
+<body>
+<div style="text-align: center; align-content: center">
+    <center>
+
+        <div align="center" style="width: 50%; height:50%">
+            <form method="POST">
+                {% csrf_token %}
+
+                <fieldset dir="rtl">
+
+                    <legend>إضافة مجموعة أسئلة</legend>
+                    <p>
+                        <label>اسم المجموعة : <input type="text" name="name" ></label>
+                    </p>
+                    <p>
+                        <label>السعر : <input name="price" type="number" value="0"/></label>
+                    </p>
+
+                    <label>نشر<input name="check" type="checkbox" value="checked"></label>
+
+                    <input name="add" type="submit" value="تاكيد">
+
+                </fieldset>
+
+            </form>
+        </div>
+    </center>
+</div>
+
+</center>
+
+<a href="{% url 'CritiqueGoldenM'%}">الرجوع</a>
+</body>
+</html>
